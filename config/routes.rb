@@ -9,8 +9,6 @@ Rails.application.routes.draw do
     end
     resources :reviews, only: %i[index create new]
   end
-
-  # get 'dashboard', to: 'pages#dashboard'
   resource :dashboard, only: [:show]
 
   resources :chats, only: [:index, :create] do

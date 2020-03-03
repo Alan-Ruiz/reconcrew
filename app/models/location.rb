@@ -5,4 +5,5 @@ class Location < ApplicationRecord
 
   monetize :price_cents
   has_many_attached :photos
+  has_many :bookings
 end
