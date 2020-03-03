@@ -29,4 +29,8 @@ group :development, :test do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'dotenv-rails'
+
+  # cloudinary
+  gem 'dotenv-rails', groups: [:development, :test]
+  gem 'cloudinary', '~> 1.12.0'
 end
