@@ -1,3 +1,5 @@
+require 'uri'
+
 Location.destroy_all
 Review.destroy_all
 User.destroy_all
