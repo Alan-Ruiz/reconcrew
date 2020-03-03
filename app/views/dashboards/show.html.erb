@@ -1,0 +1,48 @@
+<div class="container">
+  <h1>Your Hiring places</h1>
+
+  <div class="row border-bottom pb-3 mb-5">
+    <% if @locations.empty? %>
+      YOU DONT OWN ANY REAL ESTATE, LOSER
+    <% else %>
+      <% @locations.each do |location| %>
+        <div class="col-lg-4">
+          <div class="card-trip">
+          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+          <div class="card-trip-infos">
+            <div>
+              <p><%= location.name %></p>
+              <p><%= location.description %></p>
+            </div>
+            <p class="card-trip-pricing"><%= location.price %></p>
+          </div>
+          </div>
+        </div>
+      <% end %> <!-- END OF FOR EACH -->
+    <% end %>
+  </div> <!-- END OF ROW -->
+</div> <!-- END OF CONTAINER -->
+<div class="container">
+  <h1>Your renting places</h1>
+
+  <div class="row mb-5">
+    <% if @locations.empty? %>
+      YOU DONT OWN ANY REAL ESTATE, LOSER
+    <% else %>
+      <% @user.bookings.each do |booking| %>
+        <div class="col-lg-4">
+          <div class="card-trip">
+          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+          <div class="card-trip-infos">
+            <div>
+              <p><%= booking.location.name %></p>
+              <p><%= booking.location.description %></p>
+            </div>
+            <p class="card-trip-pricing"><%= booking.location.price %></p>
+          </div>
+          </div>
+        </div>
+      <% end %> <!-- END OF FOR EACH -->
+    <% end %>
+  </div> <!-- END OF ROW -->
+</div> <!-- END OF CONTAINER -->
