@@ -22,7 +22,6 @@ class LocationsController < ApplicationController
     #     infoWindow: render_to_string(partial: "info_window", locals: { location: location })
     #   }
     # end
-    # @rent = Rent.new
   end
 
   private
