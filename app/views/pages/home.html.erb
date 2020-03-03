@@ -2,12 +2,12 @@
   <div class="container">
     <div class="home">
       <div class="title">
-        <h1>Shooting for reel.</h1>
+        <h1 id="home-title">Shooting for reel.</h1>
         <p class="strong-p">Finding a filming location has never been so <span id="easy-red">easy</span>.</p>
         <div class="d-flex my-5">
           <div class="mx-4">
-            <%= render 'shared/search_bar' %></div>
-            <%= render 'shared/search_button' %></div>
+            <%= render 'shared/search_bar' %>
+          </div>
         </div>
       </div>
     </div> <!-- END OF HOME -->
@@ -20,19 +20,25 @@
       <h2>Search by category</h2>
       <div class="row my-5">
         <div class="col-lg-4">
-          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1556912173-46c336c7fd55?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80)">
+          <%=link_to locations_path(utf8: "✓", :query => "kitchen", button: ""), style:'text-decoration: none;' do %>
+            <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1556912173-46c336c7fd55?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80)">
             Kitchens
-          </div>
+            </div>
+          <% end %>
         </div>
         <div class="col-lg-4">
-          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1518012312832-96aea3c91144?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80)">
+          <%=link_to locations_path(utf8: "✓", :query => "living_room", button: ""), style:'text-decoration: none;' do %>
+            <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1518012312832-96aea3c91144?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80)">
             Living rooms
-          </div>
+            </div>
+          <% end %>
         </div>
         <div class="col-lg-4">
-          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1521483756775-c37af386fce9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80)">
+          <%=link_to locations_path(utf8: "✓", :query => "apartments", button: ""), style:'text-decoration: none;' do %>
+            <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1521483756775-c37af386fce9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80)">
             Apartments
-          </div>
+            </div>
+          <% end %>
         </div>
       </div> <!-- END OF ROW -->
       <div class="row d-flex justify-content-center my-5  ">
