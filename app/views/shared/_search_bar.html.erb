@@ -3,8 +3,7 @@
     <%= text_field_tag :query,
       params[:query],
       placeholder: "  Search for locations", class: "input" %>
-    <%= button_tag(type: "submit", class: "search-btn") do %>
-        <i class="fas fa-search"></i>
-    <% end %>
+
+      <%= submit_tag "Search", class: "btn btn-danger" %>
   <% end %>
 </div>
