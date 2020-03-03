@@ -8,8 +8,7 @@ Rails.application.routes.draw do
   end
 
   get 'dashboard', to: 'pages#dashboard'
-
-  resources :chats, only: [:index, :create] do
+    resources :chats, only: [:index, :create] do
      resources :messages, only: [:index, :create]
   end
 end
