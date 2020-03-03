@@ -1,7 +1,20 @@
 <div class="container">
   <h1>Finding places</h1>
-  <% @locations.each do |location| %>
-    <p><%= location.name %></p>
-    <p><%= location.description %></p>
-   <% end %>
-</div>
+
+  <div class="row">
+    <% @locations.each do |location| %>
+      <div class="col-lg-4">
+        <div class="card-trip">
+        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+        <div class="card-trip-infos">
+          <div>
+            <p><%= location.name %></p>
+            <p><%= location.description %></p>
+          </div>
+          <p class="card-trip-pricing"><%= location.price %></p>
+        </div>
+        </div>
+      </div>
+    <% end %> <!-- END OF FOR EACH -->
+  </div> <!-- END OF ROW -->
+</div> <!-- END OF CONTAINER -->
