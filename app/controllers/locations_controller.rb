@@ -10,6 +10,21 @@ class LocationsController < ApplicationController
     @locations = policy_scope(@locations)
   end
 
+  def show
+    set_location
+    authorize @location
+    # locations = Location.geocoded
+    # geocoded_location = locations.where(id: params[:id])
+    # @markers = geocoded_location.map do |location|
+    #   {
+    #     lat: location.latitude,
+    #     lng: location.longitude,
+    #     infoWindow: render_to_string(partial: "info_window", locals: { location: location })
+    #   }
+    # end
+    # @rent = Rent.new
+  end
+
   private
 
   def categories
@@ -20,7 +35,13 @@ class LocationsController < ApplicationController
     arr
   end
 
+    private
+
   def location_params
-    params.require(:location).permit(photos: [])
+    params.require(:location).permit(:name, :price, :address, :description, :category, photos: [])
+  end
+
+  def set_location
+    @location = Location.find(params[:id])
   end
 end
