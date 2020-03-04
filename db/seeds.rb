@@ -94,3 +94,13 @@ location_12.photos.attach(io: file_12, filename: 'nes.jpg', content_type: 'image
 file_13 = URI.open("https://s.hdnux.com/photos/01/10/01/13/18879198/3/gallery_medium.jpg")
 location_13 = Location.create!(name: "Mansion", price: 45, description: "Best drone in the market, battery don't hold as much but image is great!.", category: apartment, user: natalie, address: "Calle Embajadores")
 location_13.photos.attach(io: file_13, filename: 'nes.jpg', content_type: 'image/jpg')
+
+
+booking1 = Booking.create(user: natalie location: location_12)
+booking2 = Booking.create(user: natalie location: location_13)
+
+
+
+review1 = Review.create(rating: 5, content:"Great place, just like the pictures", booking: booking1)
+review2 = Review.create(rating: 3, content:"piece of poop brah", booking: booking1)
+review3 = Review.create(rating: 1, content:"a-ma-zing", booking: booking2)
