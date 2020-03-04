@@ -71,8 +71,8 @@ ActiveRecord::Schema.define(version: 2020_03_04_133504) do
     t.float "latitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "price_cents", default: 0, null: false
     t.string "name"
+    t.integer "price_cents", default: 0, null: false
     t.index ["category_id"], name: "index_locations_on_category_id"
     t.index ["user_id"], name: "index_locations_on_user_id"
   end

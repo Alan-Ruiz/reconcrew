@@ -104,8 +104,8 @@ location_13 = Location.create!(available_weekdays: random_weekdays,name: "Mansio
 location_13.photos.attach(io: file_13, filename: 'nes.jpg', content_type: 'image/jpg')
 
 
-booking1 = Booking.create!(user: natalie, location: location_10)
-booking2 = Booking.create!(user: charlotte, location: location_13)
+booking1 = Booking.create!(user: natalie, location: location_10, dates: ["2020-03-20"])
+booking2 = Booking.create!(user: charlotte, location: location_13, dates: ["2020-03-20", "2020-04-15"])
 
 
 
