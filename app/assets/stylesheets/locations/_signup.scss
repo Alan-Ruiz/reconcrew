@@ -1,8 +1,13 @@
+#signup h2 {
+  font-family: Montserrat;
+  margin-bottom: 20px;
+  border-bottom: ivory;
+}
+
 .signup{
   justify-content: center;
-  width:35%;
+  width: 40%;
   padding:140px;
-  margin-bottom: 50px;
 }
 
 #container{
@@ -13,10 +18,9 @@
 .foto {
  background-image: url('https://images.unsplash.com/photo-1512025316832-8658f04f8a83?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1351&q=80');
   height:80vh;
-  width:65%;
+  width:80%;
   background-size: cover;
-  justify-content: center;
-  padding: 10px;
 }
+
 
 
