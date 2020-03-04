@@ -27,9 +27,27 @@
 </div>
 <!-- END OF CAROUSEL -->
 
+<!-- RIGHT SIDE DETAILS -->
+<div class="booking-dets">
+  <div class="price"><strong><%= @location.price %></strong>/day</div>
+  <div class="dates">
+    <p>Dates</p>
+    <p>Check-in</p>
+    <p>Check-out</p>
+  </div>
+  <div class="payment-dets">
+    <div class="payment-title">
+    <p>Payment Details</p>
+    </div>
+    <div class="total-price">
+      <p><%= @location.price%> x REPLACE THIS</p>
+    </div>
+  </div>
+</div>
+<!-- END OF RIGHT SIDE -->
 
-<div class="container">
-  <!-- DETAILS -->
+
+
   <div class="row py-4">
     <!-- LEFT SIDE DETAILS -->
     <div class="col-lg-8 col-sm-12">
@@ -51,16 +69,16 @@
         </div>
       </div>
       <% if @location.bookings.nil? %>
-   <p>no tienes reviews</p>
+        <p>no tienes reviews</p>
 
       <% else %>
-      <% @location.bookings.each do |booking| %>
-        <% booking.reviews.each do |review| %>
-          <p><%= review.user.username %></p>
-          <p><%= review.description %></p>
-          <p><%= review.rating %></p>
+        <% @location.bookings.each do |booking| %>
+          <% booking.reviews.each do |review| %>
+            <p><%= review.user.username %></p>
+            <p><%= review.description %></p>
+            <p><%= review.rating %></p>
+          <% end %>
         <% end %>
-      <% end %>
       <% end %>
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum qui dolorem temporibus atque repudiandae, sapiente beatae tenetur sed impedit laborum cumque officiis, veniam dolore quod! Minus quasi nemo praesentium recusandae. Ab corporis ut repellendus numquam magni ipsum, ad quis placeat ipsa quia nostrum similique architecto optio maiores, pariatur repudiandae quos magnam hic qui debitis illum voluptatem sit! Possimus quidem ipsum, quae saepe at aspernatur eaque cupiditate quas necessitatibus.</p>
 

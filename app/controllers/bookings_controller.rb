@@ -12,7 +12,7 @@ class BookingsController < ApplicationController
 
   def create
     @location = Location.find(params[:location_id])
-    @booking = Booking.new(params.require(:Booking).permit(:start_date, :end_date))
+    @booking = Booking.new(params.require(:booking).permit(:start_date, :end_date))
     @booking.user = current_user
     @booking.location = @location
     @booking.amount = maths(params[:location][:start_date], @location)
@@ -30,7 +30,7 @@ class BookingsController < ApplicationController
       cancel_url: order_url(order)
     )
 
-    if @Booking.save
+    if @booking.save
       redirect_to confirmation_path
       booking.update(checkout_session_id: session.id)
       @location.update(available: false)

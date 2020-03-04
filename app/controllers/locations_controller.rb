@@ -1,5 +1,6 @@
 class LocationsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
+  before_action :set_location, only: [:show]
 
   def index
     if params[:query].present?
@@ -11,17 +12,8 @@ class LocationsController < ApplicationController
   end
 
   def show
-    set_location
     authorize @location
-    # locations = Location.geocoded
-    # geocoded_location = locations.where(id: params[:id])
-    # @markers = geocoded_location.map do |location|
-    #   {
-    #     lat: location.latitude,
-    #     lng: location.longitude,
-    #     infoWindow: render_to_string(partial: "info_window", locals: { location: location })
-    #   }
-    # end
+    @markers = [{lng: @location.longitude, lat: @location.latitude}]
   end
 
   private
