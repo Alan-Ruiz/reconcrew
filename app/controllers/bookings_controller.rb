@@ -21,7 +21,7 @@ class BookingsController < ApplicationController
       payment_method_types: ['card'],
       line_items: [{
         name: location.name,
-        images: #image location,
+        # images: image location,
         amount: @booking.amount,
         currency: 'eur',
         quantity: 1
