@@ -28,25 +28,11 @@
 <!-- END OF CAROUSEL -->
 
 <!-- RIGHT SIDE DETAILS -->
-<div class="booking-dets">
-  <div class="price"><strong><%= @location.price %></strong>/day</div>
-  <div class="dates">
-    <p>Dates</p>
-    <p>Check-in</p>
-    <p>Check-out</p>
-  </div>
-  <div class="payment-dets">
-    <div class="payment-title">
-    <p>Payment Details</p>
-    </div>
-    <div class="total-price">
-      <p><%= @location.price%> x REPLACE THIS</p>
-    </div>
-  </div>
-</div>
+
 <!-- END OF RIGHT SIDE -->
 
 
+ <!-- <img <%#= cl_image_tag @location.photos[0].key%>  alt="Facade" style="width:100%"> -->
 
 <div class="container">
   <div class="row py-4">
@@ -55,42 +41,39 @@
       <div class="d-flex justify-content-between border-bottom align-items-center">
         <h4><%= @location.name %></h4> <br><br>
         <span class="text-muted font-weight-light"><%= @location.user.username %></span>
-      </div>
+      </div> <!-- END OF LOCATION NAME -->
 
       <p class="border-bottom py-3"><%= @location.description %> <br><br>
-      <h4 class="mt-5">Reviews</h4>
-      <p class="border-bottom py-2"><i class="fas fa-star"></i> 4.68 | 123 reviews</p>
-      <div class="review-info">
-        <div>
-          <%= image_tag "https://kitt.lewagon.com/placeholder/users/cveneziani", class: "avatar", alt: "avatar" %>
-        </div>
-        <div class="user-info px-2 mb-3">
-          <p class="my-0 ">Fanny Ollie Gabi Gus</p>
-          <p class="my-0">January 2020</p>
-        </div>
-      </div>
-      <% if @location.bookings.nil? %>
-        <p>no tienes reviews</p>
-
-      <% else %>
-        <% @location.bookings.each do |booking| %>
-          <% booking.reviews.each do |review| %>
-            <p><%= review.user.username %></p>
-            <p><%= review.content %></p>
-            <p><%= review.rating %></p>
+      <div>
+      <h4 class="mt-5">Reviews / <%= @reviews.count %></h4>
+        <div class="review-info">
+          <% if @location.bookings.nil? %>
+            <p>no tienes reviews</p>
+          <% else %>
+            <% @reviews.each do |review| %>
+            <div class="border-bottom my-2">
+              <div class="user-info d-flex justify-content-between">
+                <p><%= review.user.username %></p>
+                <p><% d = review.created_at %> <%= d.strftime('%a %d %b %Y') %></p>
+              </div>
+              <div class="d-flex justify-content-between">
+                <p><%= review.content %></p>
+                <p><i class="fas fa-star"><%=review.rating%></i></p>
+              </div>
+            </div>
+            <% end %>
           <% end %>
-        <% end %>
-      <% end %>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum qui dolorem temporibus atque repudiandae, sapiente beatae tenetur sed impedit laborum cumque officiis, veniam dolore quod! Minus quasi nemo praesentium recusandae. Ab corporis ut repellendus numquam magni ipsum, ad quis placeat ipsa quia nostrum similique architecto optio maiores, pariatur repudiandae quos magnam hic qui debitis illum voluptatem sit! Possimus quidem ipsum, quae saepe at aspernatur eaque cupiditate quas necessitatibus.</p>
-
+        </div>
+      </div> <!-- END OF REWIWIES -->
 
       <div class="location">
         <h4 class="mb-3 border-bottom">Location</h4>
         <div id="map" style="width: 100%; height: 600px;" data-markers="<%= @markers.to_json %>" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
         </div>
-      </div>
-    </div>
+      </div> <!-- END OF LOCATIONS -->
+    </div> <!-- END OF COLUMN -->
     <!-- END OFLEFT SIDE DETAILS -->
+
         <div class="col-4">
           <div class="booking-dets">
             <div class="price"><strong><%= @location.price %></strong>/day</div>
@@ -99,10 +82,9 @@
             </div>
           </div>
         </div>
-    </div>
+    </div> <!-- END OF ROW -->
 
 
-  </div>
-  <!-- END OF DETAILS -->
+
 </div>
 <!-- END OF CONTAINER -->
