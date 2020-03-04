@@ -37,14 +37,13 @@ ActiveRecord::Schema.define(version: 2020_03_04_133504) do
   end
 
   create_table "bookings", force: :cascade do |t|
-    t.datetime "start_date"
-    t.datetime "end_date"
     t.bigint "user_id"
     t.bigint "location_id"
     t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "amount_cents", default: 0, null: false
+    t.string "dates"
     t.index ["location_id"], name: "index_bookings_on_location_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
@@ -66,14 +65,14 @@ ActiveRecord::Schema.define(version: 2020_03_04_133504) do
     t.string "address"
     t.text "description"
     t.bigint "user_id"
-    t.boolean "available"
+    t.string "available_weekdays"
     t.bigint "category_id"
     t.float "longitude"
     t.float "latitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "name"
     t.integer "price_cents", default: 0, null: false
+    t.string "name"
     t.index ["category_id"], name: "index_locations_on_category_id"
     t.index ["user_id"], name: "index_locations_on_user_id"
   end
