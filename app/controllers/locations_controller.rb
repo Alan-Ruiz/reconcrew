@@ -16,6 +16,22 @@ class LocationsController < ApplicationController
     @markers = [{lng: @location.longitude, lat: @location.latitude}]
   end
 
+  def new
+    @location = Location.new
+    authorize @location
+  end
+
+  def create
+    raise
+    @location = Location.new(location_params)
+    @location.user = current_user
+    if @location.save
+      redirect_to location_path(@location)
+    else
+      render :new
+    end
+  end
+
   private
 
   def categories

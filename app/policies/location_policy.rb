@@ -5,7 +5,6 @@ class LocationPolicy < ApplicationPolicy
     end
   end
 
-
   def show?
     true
   end

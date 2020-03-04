@@ -1,0 +1,35 @@
+
+<div class="containter">
+  <div class="signup">
+    <h2 class="text-center">List a new location</h2>
+
+    <%= simple_form_for(@location) do |f| %>
+      <%= f.error_notification %>
+      <div class="form-inputs">
+        <%= f.input :name,
+                    required: true,
+                    autofocus: true,
+                    input_html: { autocomplete: "name" }%>
+        <%= f.input :address,
+                    required: true,
+                    autofocus: true,
+                    input_html: { autocomplete: "address" }%>
+        <%= f.input :available_weekdays, collection: Location::WEEKDAYS, input_html: { multiple: true } %>
+
+        <%= f.input :description,
+                    required: true,
+                    autofocus: true,
+                    input_html: { autocomplete: "description" }%>
+        <%= f.association :category, input_html: { class: "beautiful-dropdown" }, include_hidden: false %>
+        <%= f.input :price,
+                    required: true,
+                    autofocus: true,
+                    input_html: { autocomplete: "price" }%>
+      </div>
+
+      <div class="form-actions">
+        <%= f.button :submit, "List" %>
+      </div>
+    <% end %>
+  </div>
+</div>
