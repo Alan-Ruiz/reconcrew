@@ -14,6 +14,10 @@ class LocationsController < ApplicationController
   def show
     authorize @location
     @markers = [{lng: @location.longitude, lat: @location.latitude}]
+    @booking = Booking.new
+    start_date = Time.zone.today.beginning_of_month
+    end_date = (start_date + 1.month).end_of_month
+    @available_dates = @location.available_dates(start_date, end_date)
   end
 
   private
