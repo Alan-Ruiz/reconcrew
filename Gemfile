@@ -8,6 +8,7 @@ gem 'pg', '~> 0.21'
 gem 'puma'
 gem 'rails', '5.2.4.1'
 gem 'redis'
+gem 'geocoder'
 
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass', '~> 5.12.0'
@@ -20,6 +21,10 @@ gem 'pundit'
 gem 'money-rails'
 gem 'stripe'
 gem 'stripe_event'
+gem 'montrose'
+
+# cloudinary
+  gem 'cloudinary', '~> 1.12.0'
 
 
 group :development do
@@ -33,7 +38,4 @@ group :development, :test do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'dotenv-rails'
-
-  # cloudinary
-  gem 'cloudinary', '~> 1.12.0'
 end

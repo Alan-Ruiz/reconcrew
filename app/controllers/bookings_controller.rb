@@ -1,7 +1,5 @@
 class BookingsController < ApplicationController
-  def index
-    @bookings = Booking.all
-  end
+  before_action :set_location, only: [:new, :create]
 
   def update
     # @Booking = Booking.find(params[:id])
@@ -10,46 +8,46 @@ class BookingsController < ApplicationController
     # redirect_to dashboard_path
   end
 
+  def new
+    @booking = Booking.new
+    start_date = Time.zone.today.beginning_of_month
+    end_date = (start_date + 1.month).end_of_month
+    @available_dates = @location.available_dates(start_date, end_date)
+  end
+
   def create
-    @location = Location.find(params[:location_id])
-    @booking = Booking.new(params.require(:Booking).permit(:start_date, :end_date))
+    dates = params[:booking][:dates].split(', ') if params.dig(:booking, :dates)
+    @booking = Booking.new
     @booking.user = current_user
     @booking.location = @location
-    @booking.amount = maths(params[:location][:start_date], @location)
+    @booking.dates = dates || []
+    @booking.amount =  @booking.dates.length * @location.price
 
-    session = Stripe::Checkout::Session.create(
-      payment_method_types: ['card'],
-      line_items: [{
-        name: location.name,
-        images: #image location,
-        amount: @booking.amount,
-        currency: 'eur',
-        quantity: 1
-      }],
-      success_url: order_url(order),
-      cancel_url: order_url(order)
-    )
+    # session = Stripe::Checkout::Session.create(
+    #   payment_method_types: ['card'],
+    #   line_items: [{
+    #     name: location.name,
+    #     images: #image location,
+    #     amount: @booking.amount,
+    #     currency: 'eur',
+    #     quantity: 1
+    #   }],
+    #   success_url: order_url(order),
+    #   cancel_url: order_url(order)
+    # )
 
-    if @Booking.save
+    if @booking.save
       redirect_to confirmation_path
-      booking.update(checkout_session_id: session.id)
-      @location.update(available: false)
+      # booking.update(checkout_session_id: session.id)
     else
-      render "location/show"
+      render :new
     end
   end
 
   private
 
-  def maths(date, location)
-    if date != ""
-      checks = date.split(" to ")
-      check_in = Date.parse(checks[0])
-      check_out = Date.parse(checks[1])
-      days = check_out - check_in
-      return days * location.price
-    else
-      return 0
-    end
+  def set_location
+    @location = Location.find(params[:location_id])
+    authorize @location
   end
 end

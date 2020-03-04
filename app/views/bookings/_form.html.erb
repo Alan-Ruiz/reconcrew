@@ -1,0 +1,27 @@
+
+<%= simple_form_for([@location, @booking]) do |f| %>
+
+  <%= f.input :dates, as: :string,
+                           label: "Dates",
+                           placeholder: "From",
+                           wrapper_html: { class: "inline_field_wrapper" },
+                           input_html: {
+                            data: {
+                              controller: 'flatpickr',
+                              flatpickr_enable: @available_dates,
+                              flatpickr_url: location_availabilities_path(@location),
+                              flatpickr_min_date: Time.zone.tomorrow
+                            }
+                           } %>
+
+  <%#= f.input :end_date, as: :string,
+                         label: '&nbsp;'.html_safe,
+                         placeholder: "To",
+                         wrapper_html: { class: "inline_field_wrapper" },
+                         input_html: {
+                            data: {
+                              controller: 'flatpickr'
+                            }
+                         } %>
+  <%= f.submit "Book", class: "btn btn-primary btn-lg btn-block btn-booking" %>
+<% end %>
