@@ -36,11 +36,6 @@ location_1 = Location.create!(available_weekdays: random_weekdays, name: "Small 
 location_1.photos.attach(io: file_1, filename: 'nes.jpg', content_type: 'image/jpg')
 
 
-file_2 = URI.open("https://st.hzcdn.com/simgs/1e817aff010c02db_4-6715/home-design.jpg")
-location_2 = Location.create!(available_weekdays: random_weekdays,name: "Living room", price: 25, description: "Incredible, get it with my camera, they mix like peanut butter and jelly.", category: living_room, user: pepe, address: "Plaza palmeras 6")
-location_2.photos.attach(io: file_2, filename: 'nes.jpg', content_type: 'image/jpg')
-
-
 file_3 = URI.open("https://media-cdn.tripadvisor.com/media/photo-s/10/6a/cd/f3/murphys-irish-pub-checkpoint.jpg")
 location_3 = Location.create!(available_weekdays: random_weekdays,name: "Irish pub", price: 25, description: "Great stuff, trust me.", category: pub, user: pepe, address: "Plaza palmeras 6")
 location_3.photos.attach(io: file_3, filename: 'nes.jpg', content_type: 'image/jpg')
