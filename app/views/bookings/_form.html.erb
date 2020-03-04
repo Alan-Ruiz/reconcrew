@@ -8,8 +8,9 @@
                            input_html: {
                             data: {
                               controller: 'flatpickr',
-                              flatpickr_enable: @location.scheduled_dates(Time.zone.today.beginning_of_month, Time.zone.today.end_of_month),
-                              flatpickr_url: location_availabilities_path(@location)
+                              flatpickr_enable: @available_dates,
+                              flatpickr_url: location_availabilities_path(@location),
+                              flatpickr_min_date: Time.zone.tomorrow
                             }
                            } %>
 

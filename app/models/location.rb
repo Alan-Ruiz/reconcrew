@@ -11,8 +11,16 @@ class Location < ApplicationRecord
   has_many_attached :photos
   has_many :bookings
 
+  def available_dates(start_date, end_date)
+   scheduled_dates(start_date, end_date).delete_if { |date| unavailable_dates.include? date }
+  end
+
+  def unavailable_dates
+    @unavailable_dates ||= bookings.pluck(:dates).flatten
+  end
+
   def scheduled_dates(start_date, end_date)
-    schedule(start_date, end_date).events.to_a
+    schedule(start_date, end_date).events.to_a.map(&:to_date).map(&:to_s)
   end
 
   private

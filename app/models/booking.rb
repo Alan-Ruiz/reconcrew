@@ -8,4 +8,6 @@ class Booking < ApplicationRecord
   monetize :amount_cents
 
   enum status: [:pending, :paid, :canceled]
+
+  validates :dates, presence: true
 end

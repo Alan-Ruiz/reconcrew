@@ -10,14 +10,18 @@ class BookingsController < ApplicationController
 
   def new
     @booking = Booking.new
+    start_date = Time.zone.today.beginning_of_month
+    end_date = (start_date + 1.month).end_of_month
+    @available_dates = @location.available_dates(start_date, end_date)
   end
 
   def create
-    raise
-    @booking = Booking.new(booking_params)
+    dates = params[:booking][:dates].split(', ') if params.dig(:booking, :dates)
+    @booking = Booking.new
     @booking.user = current_user
     @booking.location = @location
-    @booking.amount = maths(params[:location][:start_date], @location)
+    @booking.dates = dates || []
+    @booking.amount =  @booking.dates.length * @location.price
 
     # session = Stripe::Checkout::Session.create(
     #   payment_method_types: ['card'],
@@ -32,7 +36,7 @@ class BookingsController < ApplicationController
     #   cancel_url: order_url(order)
     # )
 
-    if @Booking.save
+    if @booking.save
       redirect_to confirmation_path
       # booking.update(checkout_session_id: session.id)
     else
@@ -45,9 +49,5 @@ class BookingsController < ApplicationController
   def set_location
     @location = Location.find(params[:location_id])
     authorize @location
-  end
-
-  def booking_params
-    params.require(:Booking).permit(:start_date, :end_date)
   end
 end

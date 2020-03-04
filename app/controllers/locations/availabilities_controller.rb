@@ -1,8 +1,13 @@
 class Locations::AvailabilitiesController < ApplicationController
+  skip_after_action :verify_policy_scoped, only: :index
+
   def index
-    byebug
     location = Location.find(params[:location_id])
 
-    render json: location.scheduled_dates(params[:start_date], params[:end_date])
+    start_date = Date.new(params[:year].to_i, params[:month].to_i + 1)
+    end_date = (start_date + 1.month).end_of_month
+
+
+    render json: location.available_dates(start_date, end_date)
   end
 end
