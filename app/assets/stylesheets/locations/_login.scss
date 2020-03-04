@@ -1,12 +1,12 @@
 .login {
 justify-content: center;
 width:40%;
-padding:50px;
+padding:110px;
 }
 
 .picture {
  background-image: url('https://images.unsplash.com/photo-1522325430955-e2d3bb38c71a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=735&q=80');
-  height:93vh;
+  height:80vh;
   width:60%;
   background-size: cover;
 }
@@ -19,4 +19,16 @@ input[type="checkbox"] {
   margin-bottom: 0;
   margin-left: 3px;
   font-weight: normal;
+
+}
+
+.btn {
+  background-color: #f00;
+    color: white;
+    /* padding-left: 98px; */
+    /* padding-right: 98px; */
+    width: 100%;
+    padding: 5px;
+    border-radius: 5px;
+    margin-bottom: 7px;
 }
