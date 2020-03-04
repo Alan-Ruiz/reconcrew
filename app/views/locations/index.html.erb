@@ -6,6 +6,7 @@
 
   <div class="row">
     <% @locations.each do |location| %>
+     <%= link_to location_path(location) do %>
       <div class="col-lg-4">
         <div class="card-trip my-3">
           <% if location.photos.attached? %>
@@ -20,6 +21,7 @@
             <!-- <p><%= location.description %></p> -->
         </div>
       </div>  <!-- END OF COL  -->
+      <% end %>
     <% end %> <!-- END OF FOR EACH -->
   </div> <!-- END OF ROW -->
 </div> <!-- END OF CONTAINER -->
