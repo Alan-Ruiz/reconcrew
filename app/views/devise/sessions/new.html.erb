@@ -1,7 +1,6 @@
 
-<div class="container">
 
-
+  <div class="d-flex align-items-center">
     <div class="login">
       <h2 class="text-center">Log in</h2>
 
@@ -15,7 +14,7 @@
           <%= f.input :password,
                       required: false,
                       input_html: { autocomplete: "current-password" } %>
-          <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+          <span><%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %></span>
         </div>
 
         <div class="form-actions">
@@ -28,5 +27,5 @@
 
     <div class= "picture">
     </div>
-
- </div> <!-- END OF CONTAINER -->
+  </div>
+ <!-- END OF CONTAINER -->
