@@ -24,7 +24,7 @@ pepe = User.create(username: "Pepe", email: "pepe@gmail.com", password: "123456"
 
 
 file_1 = URI.open('https://i.pinimg.com/originals/83/f4/a1/83f4a12fe2dbad875bef2b4fa5453868.jpg')
-location_1 = Location.create!(name: "Small kitchen", price: 55, description: "Brand new, haven't used it yet.", category: Category.find_by_name("kitchen"), user: User.find_by_name('pepe'), address: "Plaza palmeras 6")
+location_1 = Location.create!(name: "Small kitchen", price: 55, description: "Brand new, haven't used it yet.", category: Category.find_by_name("kitchen"), user: pepe, address: "Plaza palmeras 6")
 location_1.photos.attach(io: file_1, filename: 'nes.jpg', content_type: 'image/jpg')
 
 
@@ -33,7 +33,7 @@ location_1.photos.attach(io: file_1, filename: 'nes.jpg', content_type: 'image/j
 # location_2.photos.attach(io: file_2, filename: 'nes.jpg', content_type: 'image/jpg')
 
 file_3 = URI.open("https://media-cdn.tripadvisor.com/media/photo-s/10/6a/cd/f3/murphys-irish-pub-checkpoint.jpg")
-location_3 = Location.create!(name: "Irish pub", price: 25, description: "Great stuff, trust me.", category: Category.find_by_name('pub'), user: pepe, address: "Plaza palmeras 6")
+location_3 = Location.create!(name: "Irish pub", price: 25, description: "Great stuff, trust me.", category: pub, user: pepe, address: "Plaza palmeras 6")
 location_3.photos.attach(io: file_3, filename: 'nes.jpg', content_type: 'image/jpg')
 
 file_4 = URI.open("https://live.staticflickr.com/4059/4670451769_8b29a31a9a_b.jpg")
