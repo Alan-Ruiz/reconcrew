@@ -13,6 +13,12 @@ class LocationsController < ApplicationController
 
   def show
     authorize @location
+    @bookings = @location.bookings
+    @reviews = []
+    @bookings.each do |booking|
+      @reviews<< booking.reviews
+    end
+    @reviews.flatten!
     @markers = [{lng: @location.longitude, lat: @location.latitude}]
     @booking = Booking.new
     start_date = Time.zone.today.beginning_of_month
