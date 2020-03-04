@@ -76,7 +76,7 @@
         <% @location.bookings.each do |booking| %>
           <% booking.reviews.each do |review| %>
             <p><%= review.user.username %></p>
-            <p><%= review.description %></p>
+            <p><%= review.content %></p>
             <p><%= review.rating %></p>
           <% end %>
         <% end %>
