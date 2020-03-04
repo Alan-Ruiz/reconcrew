@@ -3,6 +3,8 @@ class Location < ApplicationRecord
 
   serialize :available_weekdays, Array
 
+  validates :available_weekdays, presence: true
+
   belongs_to :user
   belongs_to :category
   geocoded_by :address

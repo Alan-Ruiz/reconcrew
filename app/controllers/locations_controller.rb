@@ -18,6 +18,7 @@ class LocationsController < ApplicationController
     start_date = Time.zone.today.beginning_of_month
     end_date = (start_date + 1.month).end_of_month
     @available_dates = @location.available_dates(start_date, end_date)
+    puts "test"
   end
 
   def new
@@ -26,9 +27,13 @@ class LocationsController < ApplicationController
   end
 
   def create
-    raise
     @location = Location.new(location_params)
+    byebug
+    @category = Category.find(params[:location][:category_id])
+    # @category = Category.find(params.require(:location).permit(:category_id))
+    authorize @location
     @location.user = current_user
+    @location.category = @category
     if @location.save
       redirect_to location_path(@location)
     else
@@ -49,7 +54,10 @@ class LocationsController < ApplicationController
     private
 
   def location_params
-    params.require(:location).permit(:name, :price, :address, :description, :category, photos: [])
+    params.require(:location).permit(
+      :name, :price, :address, :description, :category_id,
+      available_weekdays: [], photos: []
+    )
   end
 
   def set_location

@@ -14,7 +14,12 @@
                     required: true,
                     autofocus: true,
                     input_html: { autocomplete: "address" }%>
-        <%= f.input :available_weekdays, collection: Location::WEEKDAYS, input_html: { multiple: true } %>
+        <%= f.input :available_weekdays, collection: Location::WEEKDAYS,
+                                         include_blank: false,
+                                         include_hidden: false,
+                                         input_html: {
+                                          multiple: true
+                                        } %>
 
         <%= f.input :description,
                     required: true,
