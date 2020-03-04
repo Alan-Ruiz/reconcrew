@@ -20,6 +20,7 @@ gem 'pundit'
 gem 'money-rails'
 gem 'stripe'
 gem 'stripe_event'
+gem 'montrose'
 
 
 group :development do
