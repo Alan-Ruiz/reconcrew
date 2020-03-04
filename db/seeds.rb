@@ -5,8 +5,8 @@ def random_weekdays
   Location::WEEKDAYS.sample(size)
 end
 
-Booking.destroy_all
 Review.destroy_all
+Booking.destroy_all
 Location.destroy_all
 Category.destroy_all
 User.destroy_all
