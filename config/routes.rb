@@ -13,11 +13,11 @@ Rails.application.routes.draw do
   end
   resource :dashboard, only: [:show]
 
-  get '/:username', to: 'pages#profile', as: 'profile'
 
-  resources :chats, only: [:index, :create] do
+  resources :chats, only: [:index, :show, :create] do
      resources :messages, only: [:index, :create]
   end
 
   resources :bookings, only: :update
+  get '/:username', to: 'pages#profile', as: 'profile'
 end
