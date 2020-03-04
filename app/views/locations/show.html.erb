@@ -48,6 +48,7 @@
 
 
 
+<div class="container">
   <div class="row py-4">
     <!-- LEFT SIDE DETAILS -->
     <div class="col-lg-8 col-sm-12">
@@ -90,6 +91,15 @@
       </div>
     </div>
     <!-- END OFLEFT SIDE DETAILS -->
+        <div class="col-4">
+          <div class="booking-dets">
+            <div class="price"><strong><%= @location.price %></strong>/day</div>
+            <div class="dates">
+              <%= render './bookings/form' %>
+            </div>
+          </div>
+        </div>
+    </div>
 
 
   </div>

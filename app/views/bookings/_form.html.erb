@@ -23,5 +23,13 @@
                               controller: 'flatpickr'
                             }
                          } %>
+                         <div class="payment-dets">
+              <div class="payment-title">
+              <p>Payment Details</p>
+              </div>
+              <div class="total-price">
+                <p><%= @location.price%> x REPLACE THIS</p>
+              </div>
+            </div>
   <%= f.submit "Book", class: "btn btn-primary btn-lg btn-block btn-booking" %>
 <% end %>
