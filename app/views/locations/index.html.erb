@@ -6,20 +6,20 @@
 
   <div class="row">
     <% @locations.each do |location| %>
-      <div class="col-lg-4">
-        <div class="card-trip my-3">
-          <% if location.photos.attached? %>
-            <%= cl_image_tag location.photos[0].key, style:"object-fit: cover; height: 217.8px;" %>
-          <% else %>
-            <img class="card-img-top" src="https://images.unsplash.com/photo-1518353053542-7ea33d942319?ixlib=rb-1.2.1&auto=format&fit=crop&w=1351&q=80" alt="Card image cap">
-          <% end %>
-          <div class="card-trip-infos">
-              <p id="card-title"><%= location.name %></p>
-              <p class="card-trip-pricing"><%= location.price %> EUR</p>
-          </div>
-            <!-- <p><%= location.description %></p> -->
-        </div>
-      </div>  <!-- END OF COL  -->
+        <div class="col-lg-4">
+           <%= link_to location_path(location), class: "card-trip my-3" do %>
+            <% if location.photos.attached? %>
+              <%= cl_image_tag location.photos[0].key, style:"object-fit: cover; height: 217.8px;" %>
+            <% else %>
+              <img class="card-img-top" src="https://images.unsplash.com/photo-1518353053542-7ea33d942319?ixlib=rb-1.2.1&auto=format&fit=crop&w=1351&q=80" alt="Card image cap">
+            <% end %>
+           <% end %>
+            <div class="card-trip-infos">
+                <p id="card-title"><%= location.name %></p>
+                <p class="card-trip-pricing"><%= location.price %> EUR</p>
+            </div>
+              <!-- <p><%= location.description %></p> -->
+        </div>  <!-- END OF COL  -->
     <% end %> <!-- END OF FOR EACH -->
   </div> <!-- END OF ROW -->
 </div> <!-- END OF CONTAINER -->
