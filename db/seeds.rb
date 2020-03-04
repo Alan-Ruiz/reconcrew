@@ -10,6 +10,7 @@ Review.destroy_all
 Location.destroy_all
 Category.destroy_all
 User.destroy_all
+Booking.destroy_all
 
 # categories
 kitchen = Category.create!(name: "kitchen")
@@ -104,11 +105,12 @@ location_13 = Location.create!(available_weekdays: random_weekdays,name: "Mansio
 location_13.photos.attach(io: file_13, filename: 'nes.jpg', content_type: 'image/jpg')
 
 
+
 booking1 = Booking.create!(user: natalie, location: location_10, dates: ["2020-03-20"])
 booking2 = Booking.create!(user: charlotte, location: location_13, dates: ["2020-03-20", "2020-04-15"])
 
 
 
-review1 = Review.create!(rating: 5, user:natalie, content:"Great place, just like the pictures", booking: booking1)
-review2 = Review.create!(rating: 3, user:charlotte, content:"piece of poop brah", booking: booking1)
-review3 = Review.create!(rating: 1, user:charlotte, content:"a-ma-zing", booking: booking2)
+review1 = Review.create(rating: 5, content:"Great place, just like the pictures", user: charlotte, booking: booking1)
+review2 = Review.create(rating: 3, content:"piece of poop brah", user: charlotte, booking: booking1)
+review3 = Review.create(rating: 1, content:"a-ma-zing", user: charlotte, booking: booking2)
