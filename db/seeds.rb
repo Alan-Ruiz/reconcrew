@@ -1,7 +1,9 @@
 require 'uri'
 
-Location.destroy_all
 Review.destroy_all
+Booking.destroy_all
+Location.destroy_all
+Category.destroy_all
 User.destroy_all
 
 # categories
