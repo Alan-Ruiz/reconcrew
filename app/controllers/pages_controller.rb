@@ -2,6 +2,8 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home]
 
   def home
+    @categories = Category.all
+    # @locations = policy_scope(Location.all)
   end
 
   def profile
