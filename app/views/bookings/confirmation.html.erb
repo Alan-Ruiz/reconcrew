@@ -6,6 +6,7 @@
     <p class="first"> The owner has 24h to accept the request. You can send him a message and if they agree you can do your payment. Thank you for trusting <span class="logo">RECon24</span>!</p>
     <p> You can view your booking at your <%= link_to "profile", dashboard_path, class: "prof-link" %> page </p>
   </div>
+  <p>Check <%= link_to @booking.location.user.username, profile_path(@booking.location.user) %> profile page</p>
   <div class="btn-confir d-flex justify-content-center ">
     <button class="confir-btn col-md-4 text-center"><%= link_to "Keep Searching", root_path%></button>
   </div>

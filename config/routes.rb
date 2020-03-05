@@ -8,8 +8,8 @@ Rails.application.routes.draw do
     resources :bookings, only: %i[create new] do
       resources :payments, only: :new
       get 'confirmation', to: 'bookings#confirmation'
+      # resources :reviews, only: %i[index create new]
     end
-    resources :reviews, only: %i[index create new]
     resources :availabilities, only: :index, controller: 'locations/availabilities'
   end
   resource :dashboard, only: [:show]
@@ -19,7 +19,10 @@ Rails.application.routes.draw do
      resources :messages, only: [:index, :create]
   end
 
-  resources :bookings, only: :update
+  resources :bookings, only: :update do
+    resources :reviews, only: [:new, :create]
+  end
+
   get '/:username', to: 'pages#profile', as: 'profile'
 
    # Sidekiq Web UI, only for admins.
