@@ -31,15 +31,15 @@
                          } %>
                          <div class="payment-dets">
               <div class="payment-title">
-              <p>Payment Details</p>
+              <p class="payment-dets border-bottom">Payment Details</p>
               </div>
               <div class>
                 <p><span id='location-price'><%= @location.price%></span> x <span id='total-price-days'>0</span> day(s)</p>
-                <p>TOTAL PRICE: <span id='total-price'>0</span> EUR</p>
+                <p class="tp-container" ><span class="tp">TOTAL PRICE</span><span class="price-container" ><span id='total-price'>0</span>€</span></p>
               </div>
             </div>
 
-  <%= f.submit "Book", class: "btn btn-primary btn-lg btn-block btn-danger date-button disable",
+  <%= f.submit "Book", class: "btn-booking btn btn-primary btn-lg btn-block btn-danger date-button disable",
                        disabled: true,
                        data: { target: 'flatpickr.button'} %>
 
