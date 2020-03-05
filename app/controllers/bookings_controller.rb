@@ -39,10 +39,17 @@ class BookingsController < ApplicationController
     # )
 
     if @booking.save
-      redirect_to bookings_confirmation_path
+      redirect_to location_booking_confirmation_path(@booking.location, @booking)
       # booking.update(checkout_session_id: session.id)
     else
       render 'locations/show'
+    end
+
+    def confirmation
+      # @location = Location.find(params[:location_id])
+      @booking = Booking.find(params[:booking_id])
+      # authorize @location
+      authorize @booking
     end
   end
 
