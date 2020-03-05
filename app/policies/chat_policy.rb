@@ -9,6 +9,10 @@ class ChatPolicy < ApplicationPolicy
     user.present?
   end
 
+  def create?
+    user_involved_in_chat?
+  end
+
   def show?
     user_involved_in_chat?
   end
