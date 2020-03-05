@@ -20,4 +20,10 @@ Rails.application.routes.draw do
 
   resources :bookings, only: :update
   get '/:username', to: 'pages#profile', as: 'profile'
+
+   # Sidekiq Web UI, only for admins.
+  require "sidekiq/web"
+  authenticate :user, lambda { |u| u.admin } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
 end
