@@ -40,7 +40,7 @@
     <div class="col-lg-8 col-sm-12">
       <div class="d-flex justify-content-between border-bottom align-items-center">
         <h4><%= @location.name %></h4> <br><br>
-        <span class="text-muted font-weight-light"><%= @location.user.username %></span>
+        <span class="text-muted font-weight-light"><%= link_to @location.user.username, profile_path(@location.user) %></span>
       </div> <!-- END OF LOCATION NAME -->
 
       <p class="border-bottom py-3"><%= @location.description %> <br><br>
