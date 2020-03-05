@@ -5,17 +5,13 @@ class ChatPolicy < ApplicationPolicy
     end
   end
 
-  def index?
-    user.present?
-  end
-
-  def show?
+  def create?
     user_involved_in_chat?
   end
 
   private
 
   def user_involved_in_chat?
-    record.sender == user || record.recipient == user
+    record.chat.sender == user || record.chat.recipient == user
   end
 end
