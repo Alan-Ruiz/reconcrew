@@ -1,25 +1,38 @@
+#log-in h2 {
+  font-family: Montserrat;
+  margin-bottom: 20px;
+}
+
+
 .login {
 justify-content: center;
 width:40%;
-padding:110px;
+padding:130px;
 }
 
 .picture {
- background-image: url('https://images.unsplash.com/photo-1522325430955-e2d3bb38c71a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=735&q=80');
+ background-image: url('https://www.leicashop.com/media/catalog/product/cache/2/image/9df78eab33525d08d6e5fb8d27136e95/2/3/23861_40.jpg');
   height:80vh;
-  width:60%;
+  width:80%;
   background-size: cover;
+  background-position: 0 -2px;
 }
 
 input[type="checkbox"] {
   margin-left: -12px;
 }
 
-.form-check-label {
+.form-check-label{
   margin-bottom: 0;
   margin-left: 3px;
   font-weight: normal;
+  font-size: 10px;
 
+}
+
+label {
+  font-size: 12px;
+  font-weight: 400;
 }
 
 .btn {
@@ -31,4 +44,29 @@ input[type="checkbox"] {
     padding: 5px;
     border-radius: 5px;
     margin-bottom: 7px;
+    font-size: 12px;
 }
+
+.btn:hover {
+  opacity: 0.75;
+  color: white;
+}
+
+
+.not-registered {
+  opacity: 0.8;
+  margin-bottom: 0px;
+}
+
+a {
+  color: red;
+}
+
+a:hover{
+  text-decoration: underline;
+  color: red;
+}
+
+
+
+
