@@ -5,15 +5,17 @@ class ReviewsController < ApplicationController
   end
 
   def new
-    @location = Location.find(params[:location_id])
+    @booking = Booking.find(params[:booking_id])
     @review = Review.new
+    authorize @review
   end
 
   def create
-    @location = Location.find(params[:location_id])
-    @review = Review.new(params.require(:review).permit(:description, :rating))
-    @review.location = @location
+    @booking = Booking.find(params[:booking_id])
+    @review = Review.new(params.require(:review).permit(:content, :rating))
+    @review.booking = @booking
     @review.user = current_user
+    authorize @review
     if @review.save
       redirect_to dashboard_path
     else
