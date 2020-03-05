@@ -40,7 +40,7 @@ class BookingsController < ApplicationController
       redirect_to confirmation_path
       # booking.update(checkout_session_id: session.id)
     else
-      render :new
+      render 'locations/show'
     end
   end
 

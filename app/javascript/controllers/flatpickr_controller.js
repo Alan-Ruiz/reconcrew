@@ -2,7 +2,10 @@ import Rails from 'rails-ujs'
 import Flatpickr from 'stimulus-flatpickr'
 
 export default class extends Flatpickr {
+  static targets = [ "button"]
+
   connect() {
+    console.log(this.price)
     this.config = {
       altInput: true,
       altFormat: 'd-m-Y',
@@ -19,6 +22,14 @@ export default class extends Flatpickr {
 
   yearChange() {
     this.fetchDates()
+  }
+
+  change(selectedDates) {
+    if (selectedDates.length > 0) {
+      this.buttonTarget.disabled = false;
+    } else {
+      this.buttonTarget.disabled = true;
+    }
   }
 
   fetchDates() {
@@ -52,5 +63,9 @@ export default class extends Flatpickr {
     } else {
       return null;
     }
+  }
+
+  get price() {
+    return this.data.has('price') ? this.data.get('price') : 0
   }
 }
