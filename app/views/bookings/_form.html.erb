@@ -1,18 +1,24 @@
 
-<%= simple_form_for([@location, @booking]) do |f| %>
+<%= simple_form_for [@location, @booking], html: {
+                                              data: {
+                                                controller: 'flatpickr',
+                                                flatpickr_enable: @available_dates,
+                                                flatpickr_url: location_availabilities_path(@location),
+                                                flatpickr_min_date: Time.zone.tomorrow,
+                                                flatpickr_price: @location.price.to_i
+                                              }
+                                            } do |f| %>
 
   <%= f.input :dates, as: :string,
                            label: "Dates",
                            placeholder: "From",
-                           wrapper_html: { class: "inline_field_wrapper", id:"date-selec" },
+                           wrapper_html: { class: "inline_field_wrapper calendar", id:"date-selec" },
                            input_html: {
                             data: {
-                              controller: 'flatpickr',
-                              flatpickr_enable: @available_dates,
-                              flatpickr_url: location_availabilities_path(@location),
-                              flatpickr_min_date: Time.zone.tomorrow
+                              target: 'flatpickr.instance'
                             }
                            } %>
+
 
   <%#= f.input :end_date, as: :string,
                          label: '&nbsp;'.html_safe,
@@ -32,5 +38,9 @@
                 <p>TOTAL PRICE: <span id='total-price'>0</span> EUR</p>
               </div>
             </div>
-  <%= f.submit "Book", class: "btn btn-primary btn-lg btn-block btn-danger" %>
+
+  <%= f.submit "Book", class: "btn btn-primary btn-lg btn-block btn-danger date-button disable",
+                       disabled: true,
+                       data: { target: 'flatpickr.button'} %>
+
 <% end %>
