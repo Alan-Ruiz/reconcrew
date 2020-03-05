@@ -1,4 +1,15 @@
-<div class="message <%= "right" if user_is_messages_author %>">
-  <%= image_tag message.user.avatar_url, class: "avatar" %>
-  <div class="message-content"><%= message.content %></div>
+<div class="message">
+  <div class="message--header">
+    <span class="message--author">
+      <%= message.user.username %>
+    </span>
+    <span class="message--time">
+      <%= message.message_time %>
+    </span>
+  </div>
+  <div class="message--text">
+    <% message.body.lines.each do |line| %>
+      <p><%= line %></p>
+    <% end %>
+  </div>
 </div>
