@@ -1,8 +1,59 @@
 // .carousel-inner {
 //   height: 80vh;
 // }
+.booking-dets{
+  position: sticky;
+  top: 0;
+  font-family: montserrat;
+  font-size: 12px;
+}
+
+.form-control:disabled, .form-control[readonly] {
+    background-color: #e9ecef;
+    opacity: 0.7;
+    width: 100%;
+    font-size: 12px;
+
+  }
+
+.price-top {
+  font-family: Montserrat;
+  font-size: 16px;
+  margin-bottom: 25px;
+  margin-top: 15px;
+}
+
+.price-top, strong {
+  margin-right: 3px;
+}
+
+.payment-dets {
+  margin-bottom: 20px;
+  margin-top: 40px;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.tp-container {
+  margin-top: 15px;
+}
+
+.tp {
+  font-weight: 700;
+  font-size:12px;
+}
+
+.price-container {
+  float: right;
+  font-size: 14px;
+}
 
 .carousel-item img {
-  height:500px;
+  height:450px;
   object-fit: cover;
+}
+
+.btn-booking {
+  margin-top: 20px;
+  margin-bottom: 20px;
 }

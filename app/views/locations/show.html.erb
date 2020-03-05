@@ -1,10 +1,5 @@
 <!-- CAROUSEL -->
 <div id="carousel-banner" class="carousel slide" data-ride="carousel">
-  <ol class="carousel-indicators">
-    <li data-target="#carousel-banner" data-slide-to="0" class="active"></li>
-    <li data-target="#carousel-banner" data-slide-to="1"></li>
-    <li data-target="#carousel-banner" data-slide-to="2"></li>
-  </ol>
   <div class="carousel-inner">
     <div class="carousel-item active">
         <img src="https://www.thecelebrationsociety.com/wp-content/uploads/2016/09/white-mansion-with-french-doors-and-coloums-AIS-Portraits-2-of-68.jpg" alt="Facade" style="width:100%">
@@ -68,15 +63,15 @@
 
       <div class="location">
         <h4 class="mb-3 border-bottom">Location</h4>
-        <div id="map" style="width: 100%; height: 600px;" data-markers="<%= @markers.to_json %>" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+        <div id="map" style="width: 100%; height: 500px;" data-markers="<%= @markers.to_json %>" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
         </div>
       </div> <!-- END OF LOCATIONS -->
     </div> <!-- END OF COLUMN -->
     <!-- END OFLEFT SIDE DETAILS -->
 
-        <div class="col-4">
-          <div class="booking-dets">
-            <div class="price"><strong><%= @location.price %></strong>/day</div>
+        <div class="col-lg-4 col-sm-12">
+          <div class="booking-dets border rounded p-4">
+            <div class="price-top border-bottom"><strong><%= @location.price %></strong>/day</div>
             <div class="dates">
               <%= render './bookings/form' %>
             </div>
