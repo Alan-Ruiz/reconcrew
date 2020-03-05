@@ -1,16 +1,19 @@
-<% content_for :after_js do %>
-  <script>
-    scrollLastMessageIntoView();
-    App['chat_room_<%= @chat_room.id %>'] = App.cable.subscriptions.create(
-      { channel: 'ChatRoomsChannel', chat_room_id: <%= @chat_room.id %> },
-      {
-        received: (data) => {
-          if (data.current_user_id !== <%= current_user.id %>) {
-            const messagesContainer = document.querySelector('.messages');
-            messagesContainer.insertAdjacentHTML('beforeend', data.message_partial);
-            scrollLastMessageIntoView();
-          }
-      }
-    )
-  </script>
-<% end %>
+
+<div style="margin-top: 30px; height: calc(100vh - 130px);">
+  <div class="chat">
+    <div class="messages">
+      <div class="messages--content">
+        <%= render @messages %>
+      </div>
+    </div>
+    <div class="chat--form">
+      <%= form_for [@chat, @message] do |f| %>
+        <div class="message-form">
+          <%= f.text_field :body, placeholder: "Type message", autofocus: true, class: "message-form--input" %>
+          <%= f.hidden_field :chat_id, value: @chat.id %>
+          <%= f.submit "Send", class: "message-form--submit" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

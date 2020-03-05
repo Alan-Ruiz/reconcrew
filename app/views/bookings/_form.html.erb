@@ -12,23 +12,35 @@
   <%= f.input :dates, as: :string,
                            label: "Dates",
                            placeholder: "From",
-                           wrapper_html: { class: "inline_field_wrapper calendar" },
+                           wrapper_html: { class: "inline_field_wrapper calendar", id:"date-selec" },
                            input_html: {
                             data: {
                               target: 'flatpickr.instance'
                             }
                            } %>
 
-  <div class="payment-dets">
-    <div class="payment-title">
-      <p>Payment Details</p>
-    </div>
-    <div class="total-price">
-      <p><%= @location.price%> x REPLACE THIS</p>
-    </div>
-  </div>
+
+  <%#= f.input :end_date, as: :string,
+                         label: '&nbsp;'.html_safe,
+                         placeholder: "To",
+                         wrapper_html: { class: "inline_field_wrapper" },
+                         input_html: {
+                            data: {
+                              controller: 'flatpickr'
+                            }
+                         } %>
+                         <div class="payment-dets">
+              <div class="payment-title">
+              <p>Payment Details</p>
+              </div>
+              <div class>
+                <p><span id='location-price'><%= @location.price%></span> x <span id='total-price-days'>0</span> day(s)</p>
+                <p>TOTAL PRICE: <span id='total-price'>0</span> EUR</p>
+              </div>
+            </div>
 
   <%= f.submit "Book", class: "btn btn-primary btn-lg btn-block btn-danger date-button disable",
                        disabled: true,
                        data: { target: 'flatpickr.button'} %>
+
 <% end %>
