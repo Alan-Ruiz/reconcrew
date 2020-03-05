@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     # TODO: Remove #new action when Booking widget is available
     resources :bookings, only: %i[create new] do
       resources :payments, only: :new
+      get 'confirmation', to: 'bookings#confirmation'
     end
     resources :reviews, only: %i[index create new]
     resources :availabilities, only: :index, controller: 'locations/availabilities'
