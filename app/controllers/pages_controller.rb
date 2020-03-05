@@ -5,7 +5,7 @@ class PagesController < ApplicationController
   end
 
   def profile
-    @user = User.find_by(username: params[:username])
+    @user = User.find(params[:username])
     @user_locations = @user.locations
     @location_reviews = []
     @user_reviews = []

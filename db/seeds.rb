@@ -92,8 +92,10 @@ location_11.photos.attach(io: file_11, filename: 'nes.jpg', content_type: 'image
 natalie = User.create!(username: "Natalie", email: "natalie@gmail.com", password: "123456")
 
 file_12 = URI.open("https://d1bvpoagx8hqbg.cloudfront.net/originals/huge-room-big-bathroom-separated-wardrobe-d6512776dde7da2a630ba5cf05e7d08a.jpg")
+file_121 = URI.open("https://iruntheinternet.com/lulzdump/images/giant-toilet-slide-kids-massive-toilet-14047686390.jpg")
 location_12 = Location.create!(available_weekdays: random_weekdays,name: "Massive toilet", price: 15, description: "This thing can hold an elephant!", category: toilet, user: natalie, address: "Calle Embajadores")
 location_12.photos.attach(io: file_12, filename: 'nes.jpg', content_type: 'image/jpg')
+location_12.photos.attach(io: file_121, filename: 'nes.jpg', content_type: 'image/jpg')
 
 file_13 = URI.open("https://s.hdnux.com/photos/01/10/01/13/18879198/3/gallery_medium.jpg")
 location_13 = Location.create!(available_weekdays: random_weekdays,name: "Mansion", price: 45, description: "Best drone in the market, battery don't hold as much but image is great!.", category: apartment, user: natalie, address: "Calle Embajadores")

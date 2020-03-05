@@ -17,4 +17,4 @@ import {disableButton} from '../components/disable_button.js';
 
 initMapbox();
 
-disableButton();
+
