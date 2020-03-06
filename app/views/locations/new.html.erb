@@ -2,7 +2,6 @@
 <div class="containter">
   <div class="signup">
     <h2 class="text-center">List a new location</h2>
-
     <%= simple_form_for(@location) do |f| %>
       <%= f.error_notification %>
       <div class="form-inputs">
@@ -31,7 +30,6 @@
                     autofocus: true,
                     input_html: { autocomplete: "price" }%>
       </div>
-
       <div class="form-actions">
         <%= f.button :submit, "List" %>
       </div>
