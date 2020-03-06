@@ -28,21 +28,29 @@
         <% end %> <!-- END OF FOR EACH -->
       </div> <!-- END OF ROW   ///   LISTED LOCATIONS -->
 
-      <div class="mb-4">
-        <h3 class="mb-4">User reviews</h3>
-        <div class="d-flex justify-content-between border bottom">
-          <% @user_reviews.each do |review| %>
-          <p><%= review.user.username %></p>
-          <p><%= review.rating %></p>
-          <p><%= review.content %></p>
+
+    <div class="mb-4">
+      <h3 class="mb-4">User reviews</h3>
+      <div class="d-flex justify-content-between border bottom">
+        <% @user.bookings.each do |booking| %>
+          <% booking.reviews.each do |review| %>
+            <% if review.user != @user %>
+              <p><%= review.user.username %></p>
+              <p><%= review.rating %></p>
+              <p><%= review.content %></p>
+
+            <% end %>
           <% end %>
+         <% end %>
         </div>
       </div>
 
+      
       <div class="mb-4">
         <h3 class="mb-4">Location reviews</h3>
         <div class="">
           <% @location_reviews.each do |review| %>
+          <% if review.user != @user %>
           <p class="location-name"><%= review.booking.location.name %></p>
             <div class="row">
               <div class="col-lg-6">
@@ -55,7 +63,7 @@
                 <p><%= review.content %></p>
               </div>
             </div>
-
+           <% end %>
           <% end %>
         </div>
       </div>
