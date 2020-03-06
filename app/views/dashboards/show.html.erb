@@ -1,5 +1,5 @@
 <div class="container">
-  <h1>Your Places</h1>
+  <h3>Your Places</h3>
 
   <div class="row border-bottom pb-3 mb-5">
     <% if @locations.empty? %>
@@ -23,7 +23,7 @@
   </div> <!-- END OF ROW -->
 </div> <!-- END OF CONTAINER -->
 <div class="container">
-  <h1>Some is trying to book!!</h1>
+  <h3>Some is trying to book!!</h3>
 
   <div class="row mb-5">
     <% @locations.each do |location| %>
@@ -64,12 +64,12 @@
   </div> <!-- END OF CONTAINER -->
 </div>
 <div class="container">
-  <h1>Your bookings</h1>
+  <h3>Your bookings</h3>
   <div class="row mb-5">
       <% @user.bookings.each do |booking| %>
         <div class="col-lg-4">
           <div class="card-trips">
-            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+            <!-- <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg"> -->
               <div class="card-trip-infos">
                 <div>
                   <p><%= booking.location.name %></p>
