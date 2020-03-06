@@ -39,33 +39,41 @@
 
 
 
-<div class="container">
-  <div class="row py-4">
+<div class="show-container">
+  <div class="loc-dets-cont row "> <!-- Deleted py-4 from class -->
     <!-- LEFT SIDE DETAILS -->
-    <div class="col-lg-8 col-sm-12">
-      <div class="d-flex justify-content-between border-bottom align-items-center">
-        <h4><%= @location.name %></h4> <br><br>
-        <span class="text-muted font-weight-light"><%= link_to @location.user.username, profile_path(@location.user) %></span>
-        <%= link_to "start talking to #{@location.user.username}", chats_path(sender_id: current_user, recipient_id: @location.user), method: :post %>
+    <div class="location-details col-lg-8 col-sm-12">
+      <div class="loc-title d-flex justify-content-between border-bottom align-items-center">
+        <h3><%= @location.name%></h3> <br><br>
       </div> <!-- END OF LOCATION NAME -->
 
-      <p class="border-bottom py-3"><%= @location.description %> <br><br>
+      <div class="loc-info">
+        <div class="avatar-name d-flex">
+          <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar"%><%= link_to @location.user.username, profile_path(@location.user), class: "owner-name" %>
+        </div>
+
+          <div class="desc-msg border-bottom">
+          <p class="loc-desc" ><%= @location.description %></p><!-- Deleted py-3 from class -->
+          <div class="msg-lnk d-flex">
+            <span class="msg-link"><%= link_to "Message #{@location.user.username}", chats_path(sender_id: current_user, recipient_id: @location.user), method: :post %><i class="far fa-comment-dots"></i></span>
+          </div>
+        </div>
+      </div>
       <div>
-      <h4 class="mt-5">Reviews / <%= @reviews.count %></h4>
+      <p class="reviews-title-count mt-5"><span class="reviews-title">Reviews</span><span class="reviews-count" >(<%= @reviews.count%>)</span></p>
         <div class="review-info">
           <% if @location.bookings.nil? %>
-            <p>no tienes reviews</p>
+            <p>You don't have any reviews yet</p>
           <% else %>
             <% @reviews.each do |review| %>
               <% if review.user != @location.user %>
                 <div class="border-bottom my-2">
                   <div class="user-info d-flex justify-content-between">
-                    <p><%= review.user.username %></p>
-                    <p><% d = review.created_at %> <%= d.strftime('%a %d %b %Y') %></p>
+                    <p><%= review.user.username %><i class="fas fa-star"><%=review.rating%></i></p>
+                    <p><% d = review.created_at %> <span class="date"><%= d.strftime('%a %d %b %Y') %></span></p>
                   </div>
                   <div class="d-flex justify-content-between">
                     <p><%= review.content %></p>
-                    <p><i class="fas fa-star"><%=review.rating%></i></p>
                   </div>
                 </div>
               <% end %>
@@ -75,7 +83,6 @@
       </div> <!-- END OF REWIWIES -->
 
       <div class="location">
-        <h4 class="mb-3 border-bottom">Location</h4>
         <div id="map" style="width: 100%; height: 500px;" data-markers="<%= @markers.to_json %>" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
         </div>
       </div> <!-- END OF LOCATIONS -->
@@ -84,7 +91,7 @@
 
         <div class="col-lg-4 col-sm-12">
           <div class="booking-dets border rounded p-4">
-            <div class="price-top border-bottom"><strong><%= @location.price %></strong>/day</div>
+            <div class="price-top border-bottom"><strong><%= @location.price %>€</strong>/day</div>
             <div class="dates">
               <%= render './bookings/form' %>
             </div>

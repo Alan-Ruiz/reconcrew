@@ -1,10 +1,91 @@
 // .carousel-inner {
 //   height: 80vh;
 // }
+
+.show-container {
+  margin: 20px 100px;
+}
+
+.loc-dets-cont {
+  padding-bottom: 0px;
+  padding-top: 0px;
+}
+
+.location-details {
+  margin-top: 30px;
+}
+
+.loc-info {
+  margin-top: 30px;
+}
+
+.loc-desc {
+  margin-bottom: 20px;
+}
+
+.msg-lnk {
+  justify-content: flex-end;
+  font-size: 12px;
+}
+
+.msg-lnk, a:hover {
+color: red;
+}
+
+.owner-name {
+  margin-left: 10px;
+  font-size: 16px;
+}
+
+.avatar-name {
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.fa-comment-dots{
+  color: red;
+  margin-left: 10px;
+}
+
+.reviews-title-count {
+  margin-bottom:30px
+}
+
+.reviews-title {
+  font-size: 18px;
+  margin-right: 5px;
+}
+
+.reviews-count{
+  font-size: 16px;
+  opacity: 0.6;
+}
+
+.date {
+  font-size: 12px;
+}
+
+.user-info {
+  margin-bottom: 20px;
+}
+
+.fa-star {
+  margin-left: 5px;
+  color: red;
+  opacity: 0.7;
+}
+
+
+.location {
+    margin-top: 30px;
+}
+
 .booking-dets{
+  margin-left: 40px;
+  margin-top: 30px;
   position: sticky;
   top: 0;
-  font-family: montserrat;
+  font-family: "Noto Sans", "Helvetica", "sans-serif";
   font-size: 12px;
 }
 
@@ -17,7 +98,7 @@
   }
 
 .price-top {
-  font-family: Montserrat;
+  font-family: "Noto Sans", "Helvetica", "sans-serif";
   font-size: 16px;
   margin-bottom: 25px;
   margin-top: 15px;
@@ -49,7 +130,7 @@
 }
 
 .carousel-item img {
-  height:450px;
+  height:500px;
   object-fit: cover;
 }
 
