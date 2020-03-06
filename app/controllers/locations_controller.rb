@@ -34,7 +34,6 @@ class LocationsController < ApplicationController
 
   def create
     @location = Location.new(location_params)
-    byebug
     @category = Category.find(params[:location][:category_id])
     # @category = Category.find(params.require(:location).permit(:category_id))
     authorize @location
