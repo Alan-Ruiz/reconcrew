@@ -9,6 +9,10 @@ class BookingPolicy < ApplicationPolicy
     user.present?
   end
 
+  def update?
+    user.present?
+  end
+
   def confirmation?
     true
   end

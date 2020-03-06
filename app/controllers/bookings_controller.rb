@@ -2,10 +2,16 @@ class BookingsController < ApplicationController
   before_action :set_location, only: [:new, :create]
 
   def update
-    # @Booking = Booking.find(params[:id])
-    # @Booking.request = true
-    # @Booking.save
-    # redirect_to dashboard_path
+    if params[:commit] == "Accept"
+      @booking = Booking.find(params[:id])
+      @booking.status = 1
+    elsif params[:commit] == "Reject"
+      @booking = Booking.find(params[:id])
+      @booking.status = 2
+    end
+    @booking.save
+    authorize @booking
+    redirect_to dashboard_path
   end
 
 
@@ -24,6 +30,7 @@ class BookingsController < ApplicationController
     @booking.location = @location
     @booking.dates = dates || []
     @booking.amount =  @booking.dates.length * @location.price
+    @booking.status = 0
 
     # session = Stripe::Checkout::Session.create(
     #   payment_method_types: ['card'],

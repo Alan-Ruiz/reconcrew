@@ -26,23 +26,38 @@
   <h1>Your renting places</h1>
 
   <div class="row mb-5">
-    <% if @locations.empty? %>
-      YOU DONT OWN ANY REAL ESTATE, LOSER
-    <% else %>
-      <% @user.bookings.each do |booking| %>
+    <% @locations.each do |location| %>
+      <% location.bookings.each do |booking| %>
         <div class="col-lg-4">
-          <div class="card-trip">
-          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
-          <div class="card-trip-infos">
-            <div>
-              <p><%= booking.location.name %></p>
-              <p><%= booking.location.description %></p>
+          <div class="card-trips">
+            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+              <div class="card-trip-infos">
+                <div>
+                  <p><%= booking.location.name %></p>
+                  <p><%= booking.location.description %></p>
+                </div>
+                <p class="card-trip-pricing"><%= booking.location.price %></p>
+                <% if booking.status == "pending" %>
+                  <%= simple_form_for booking, method: :patch do |t| %>
+                    <%= t.input :status, as: :hidden, html: { value: 1} %>
+                    <%= t.submit "Accept" %>
+                    <% end %>
+                  <%= simple_form_for booking, method: :patch do |t| %>
+                    <%= t.input :status, as: :hidden, html: { value: 2} %>
+                    <%= t.submit "Reject" %>
+                    <% end %>
+                <% elsif booking.status == "canceled" %>
+                  <p>Canceled</p>
+                <% elsif booking.status == "comfirm" %>
+                  <p>Accepted</p>
+                  <% else %>
+                  hello
+                <% end %>
+
             </div>
-            <p class="card-trip-pricing"><%= booking.location.price %></p>
-          </div>
           </div>
         </div>
       <% end %> <!-- END OF FOR EACH -->
     <% end %>
-  </div> <!-- END OF ROW -->
-</div> <!-- END OF CONTAINER -->
+  </div> <!-- END OF CONTAINER -->
+</div>
