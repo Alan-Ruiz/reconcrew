@@ -66,15 +66,17 @@
             <p>You don't have any reviews yet</p>
           <% else %>
             <% @reviews.each do |review| %>
-            <div class="border-bottom my-2">
-              <div class="user-info d-flex justify-content-between">
-                <p><%= review.user.username %><i class="fas fa-star"><%=review.rating%></i></p>
-                <p><% d = review.created_at %> <span class="date"><%= d.strftime('%a %d %b %Y') %></span></p>
-              </div>
-              <div class="d-flex justify-content-between">
-                <p><%= review.content %></p>
-              </div>
-            </div>
+              <% if review.user != @location.user %>
+                <div class="border-bottom my-2">
+                  <div class="user-info d-flex justify-content-between">
+                    <p><%= review.user.username %><i class="fas fa-star"><%=review.rating%></i></p>
+                    <p><% d = review.created_at %> <span class="date"><%= d.strftime('%a %d %b %Y') %></span></p>
+                  </div>
+                  <div class="d-flex justify-content-between">
+                    <p><%= review.content %></p>
+                  </div>
+                </div>
+              <% end %>
             <% end %>
           <% end %>
         </div>

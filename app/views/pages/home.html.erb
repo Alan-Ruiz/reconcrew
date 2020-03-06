@@ -1,11 +1,11 @@
 <div class="white">
-  <div class="container">
+  <div class="reel-cont">
     <div class="home">
       <div class="title">
         <h1>SHOOTING FOR REEL</h1>
         <p class="strong-p">Finding a filming location has never been so <span id="easy-red">easy</span>.</p>
         <div class="d-flex my-5">
-          <div class="mx-4">
+          <div class="my-4">
             <%= render 'shared/search_bar' %>
           </div>
         </div>
@@ -15,58 +15,59 @@
 </div><!-- END OF WHITE 1 -->
 
 <div class="black">
-  <div class="container">
+  <div class="reel-cont">
       <div class="home-categories py-5">
-        <h2>Search by category</h2>
-        <div class="d-flex justify-content-between py-5">
-          <div class="w-50">
-            <div id="carouselExampleCaptions" class="carousel slide w-40" data-ride="carousel">
-              <div class="carousel-inner">
-                <% @categories.each do |category| %>
-                <% if category.name == 'kitchen' %>
-                  <div class="carousel-item active">
-                <% else %>
-                <div class="carousel-item">
-                <% end %>
-                  <%=link_to locations_path(utf8: "✓", :query => category.name, button: ""), style:'text-decoration: none;' do %>
-                  <img src="https://images.unsplash.com/photo-1556912173-46c336c7fd55?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80" class="d-block w-100" alt="...">
-                  <div class="carousel-caption d-none d-md-block">
-                      <h2><%= category.name.capitalize %></h2>
+        <h2 class="my-5">Search by category</h2>
+
+        <div class="row">
+          <% @categories.each do |cat| %>
+              <div class="col-lg-3 my-3">
+                <%=link_to locations_path(utf8: "✓", :query => cat.name, button: ""), class: "card-trip my-3" do %>
+                <% case cat.name %>
+                <% when "kitchen" %>
+                  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1556912173-3bb406ef7e77?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80)">
+                    <%= cat.name.capitalize %>
                   </div>
-                  <% end %>
-                </div>
+                <% when "pub" %>
+                  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1485686531765-ba63b07845a7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1047&q=80)">
+                    <%= cat.name.capitalize %>
+                  </div>
+                <% when "apartment" %>
+                  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80)">
+                    <%= cat.name.capitalize %>
+                  </div>
+                <% when "garden" %>
+                  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1558521558-037f1cb027c5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1234&q=80)">
+                    <%= cat.name.capitalize %>
+                  </div>
+                <% when "living_room" %>
+                  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1541123603104-512919d6a96c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80)">
+                    <%= cat.name.capitalize %>
+                  </div>
+                <% when "basement" %>
+                  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1558101186-a6f75b6dacd4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=375&q=80)">
+                    <%= cat.name.capitalize %>
+                  </div>
+                <% when "toilet" %>
+                  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1569597967185-cd6120712154?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=667&q=80)">
+                    <%= cat.name.capitalize %>
+                  </div>
+                <% when "restaurant" %>
+                  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1533777857889-4be7c70b33f7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80)">
+                    <%= cat.name.capitalize %>
+                  </div>
+                <% else %>
+                  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1533777857889-4be7c70b33f7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80)">
+                    <%= cat.name.capitalize %>
+                  </div>
                 <% end %>
-              </div>
-
-              <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-              </a>
-              <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-              </a>
-            </div> <!-- END OF CAROUSEL LEFT -->
-          </div>
-
-
-          <div class="d-flex justify-content-between mx-5">
-            <div class="row">
-              <% @categories.each do |cat| %>
-                <div class="col-6 text-center">
-                  <%=link_to locations_path(utf8: "✓", :query => cat.name, button: ""), style:'text-decoration: none;' do %>
-                    <h3><%= cat.name.capitalize %></h3>
-                  <% end %>
-                </div>
               <% end %>
-            </div>
+            </div>  <!-- END OF COL  -->
+          <% end %> <!-- END OF FOR EACH -->
+        </div> <!-- END OF ROW -->
+      </div>
 
-          </div> <!-- END OF RIGHT DIV -->
-
-        </div> <!-- END OF D-FLEX -->
-
-
-      <div class="row d-flex justify-content-center my-5  ">
+      <div class="row d-flex justify-content-center my-5 pb-5">
         <%= render 'shared/show_button' %>
       </div>
     </div> <!-- END OF HOME-CATEGORIES -->

@@ -1,6 +1,7 @@
 @import "login";
 @import "signup";
 @import "show";
+@import "list_new";
 
 
 .card-trip {
@@ -8,6 +9,12 @@
   background: white;
   // box-shadow: 0 0 15px rgba(0,0,0,0.2);
   height: 280px;
+}
+.card-trips {
+  overflow: hidden;
+  background: white;
+  // box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  // height: 280px;
 }
 
 .card-trip > img {

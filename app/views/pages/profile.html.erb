@@ -1,16 +1,15 @@
 <div class="container">
-  <h1><%= @user.username %></h1>
+  <h3 class="text-center mb-5">User profile</h3>
   <div class="row">
     <div class="col-lg-3 text-center">
-      <div class="border">
-        <h2><%= @user.username %></h2>
+      <div class="border p-5">
         <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar"%>
-        <p>Avatar</p>
+        <h3><%= @user.username %></h3>
       </div>
     </div>
     <div class="col-lg-9">
-      <h2>Listed locations</h2>
-      <div class="row">
+      <h3 class="mb-4">Listed locations</h3>
+      <div class="row mb-5">
         <% @user.locations.each do |location| %>
           <div class="col-lg-4">
              <%= link_to location_path(location), class: "card-trip my-3" do %>
@@ -20,35 +19,55 @@
                 <img class="card-img-top" src="https://images.unsplash.com/photo-1518353053542-7ea33d942319?ixlib=rb-1.2.1&auto=format&fit=crop&w=1351&q=80" alt="Card image cap">
               <% end %>
              <% end %>
-              <div class="card-trip-infos">
-                  <p id="card-title"><%= location.name %></p>
-                  <p class="card-trip-pricing"><%= location.price %> EUR</p>
+              <div class="d-flex justify-content-between pt-3">
+                  <p class="location-name"><%= location.name %></p>
+                  <p id="location-price"><%= location.price %> EUR</p>
               </div>
               <!-- <p><%= location.description %></p> -->
             </div>  <!-- END OF COL  -->
         <% end %> <!-- END OF FOR EACH -->
       </div> <!-- END OF ROW   ///   LISTED LOCATIONS -->
 
-      <h2>User reviews</h2>
+
+    <div class="mb-4">
+      <h3 class="mb-4">User reviews</h3>
       <div class="d-flex justify-content-between border bottom">
-        <% @user_reviews.each do |review| %>
-        <p><%= review.user.username %></p>
-        <p><%= review.rating %></p>
-        <p><%= review.content %></p>
-        <% end %>
+        <% @user.bookings.each do |booking| %>
+          <% booking.reviews.each do |review| %>
+            <% if review.user != @user %>
+              <p><%= review.user.username %></p>
+              <p><%= review.rating %></p>
+              <p><%= review.content %></p>
+
+            <% end %>
+          <% end %>
+         <% end %>
+        </div>
       </div>
 
-      <h2>Location reviews</h2>
-      <div class="border bottom">
-        <% @location_reviews.each do |review| %>
-        <div class="d-flex justify-content-between">
-          <p><%= review.user.username %></p>
-          <p><%= review.booking.location.name %></p>
-          <p><%= review.rating %></p>
-          <p><%= review.content %></p>
+      
+      <div class="mb-4">
+        <h3 class="mb-4">Location reviews</h3>
+        <div class="">
+          <% @location_reviews.each do |review| %>
+          <% if review.user != @user %>
+          <p class="location-name"><%= review.booking.location.name %></p>
+            <div class="row">
+              <div class="col-lg-6">
+                <p><%= review.user.username %></p>
+              </div>
+              <div class="col-lg-6 text-right">
+                <i class="fas fa-star"></i><span><%= review.rating %></span>
+              </div>
+              <div class="col-lg-6">
+                <p><%= review.content %></p>
+              </div>
+            </div>
+           <% end %>
+          <% end %>
         </div>
-        <% end %>
       </div>
+
     </div>
   </div>
 </div>
