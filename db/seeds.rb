@@ -5,6 +5,7 @@ def random_weekdays
   Location::WEEKDAYS.sample(size)
 end
 
+Chat.destroy_all
 Review.destroy_all
 Booking.destroy_all
 Location.destroy_all
@@ -105,9 +106,9 @@ file_14 = URI.open("https://ws.icnea.net/img2/E1568/imgs/E1045F0x350.jpg")
 file_141 = URI.open("https://d3v91i3f0p5scr.cloudfront.net/properties/room_search_result/6bc8cb9c-9f1c-49b5-bc54-e7ac19411b0c/b4b8d17f25865e4e4f481db4ddc171f150571144.jpeg")
 file_142 = URI.open("https://www.aparteasy.com/long-term-rental/fotos/2/1506071694e29eb1f0aa6fa2430fa6a5ef93099cfb/150607170818d562871905c0acb4add90965332619.jpg")
 location_14 = Location.create!(available_weekdays: random_weekdays,name: "Nice apartment", price: 95, description: "Aparment in the center of madrid. Great location for small productions, we can't hold more than 12 people and you need to tell us what type of equipment you will be using, the flat is as it is, you can change the place of small things but not the big ones.", category: apartment, user: natalie, address: "Calle Embajadores")
-location_14.photos.attach(io: file_12, filename: 'nes.jpg', content_type: 'image/jpg')
-location_141.photos.attach(io: file_121, filename: 'nes.jpeg', content_type: 'image/jpeg')
-location_142.photos.attach(io: file_121, filename: 'nes.jpg', content_type: 'image/jpg')
+location_14.photos.attach(io: file_14, filename: 'nes.jpg', content_type: 'image/jpg')
+location_14.photos.attach(io: file_141, filename: 'nes.jpeg', content_type: 'image/jpeg')
+location_14.photos.attach(io: file_142, filename: 'nes.jpg', content_type: 'image/jpg')
 
 
 booking1 = Booking.create!(user: natalie, location: location_10, dates: ["2020-03-20"])
