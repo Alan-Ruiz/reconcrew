@@ -2,7 +2,7 @@
   <div class="container">
     <div class="home">
       <div class="title">
-        <h1 id="home-title">SHOOTING FOR REEL</h1>
+        <h1>SHOOTING FOR REEL</h1>
         <p class="strong-p">Finding a filming location has never been so <span id="easy-red">easy</span>.</p>
         <div class="d-flex my-5">
           <div class="mx-4">
@@ -18,7 +18,7 @@
   <div class="container">
       <div class="home-categories py-5">
         <h2>Search by category</h2>
-        <div class="d-flex justify-content-between">
+        <div class="d-flex justify-content-between py-5">
           <div class="w-50">
             <div id="carouselExampleCaptions" class="carousel slide w-40" data-ride="carousel">
               <div class="carousel-inner">
@@ -28,10 +28,12 @@
                 <% else %>
                 <div class="carousel-item">
                 <% end %>
+                  <%=link_to locations_path(utf8: "✓", :query => category.name, button: ""), style:'text-decoration: none;' do %>
                   <img src="https://images.unsplash.com/photo-1556912173-46c336c7fd55?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80" class="d-block w-100" alt="...">
                   <div class="carousel-caption d-none d-md-block">
-                    <h2><%= category.name.capitalize %></h2>
+                      <h2><%= category.name.capitalize %></h2>
                   </div>
+                  <% end %>
                 </div>
                 <% end %>
               </div>
@@ -53,7 +55,7 @@
               <% @categories.each do |cat| %>
                 <div class="col-6 text-center">
                   <%=link_to locations_path(utf8: "✓", :query => cat.name, button: ""), style:'text-decoration: none;' do %>
-                    <h2><%= cat.name.capitalize %></h2>
+                    <h3><%= cat.name.capitalize %></h3>
                   <% end %>
                 </div>
               <% end %>

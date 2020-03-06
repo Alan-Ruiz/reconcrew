@@ -1,24 +1,14 @@
-.navbar-lewagon {
-  justify-content: space-between;
+.nav-bar {
   background: white;
-}
-
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
-}
-
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
-}
-
-.navbar-brand {
-  color: red;
-  font-weight: bold;
+  font-size: 18px;
 }
 #black {
   color: black;
 }
-
-.navbar-brand i {
+.nav-brand i {
   color: red;
+}
+.nav-brand {
+  font-weight: bold;
+  font-size: 28px;
 }
