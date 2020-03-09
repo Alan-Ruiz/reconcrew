@@ -1,6 +1,14 @@
 <div class="reel-cont">
   <div class="d-flex justify-content-center my-3">
-    <%= render 'shared/search_bar' %>
+    <div class="search-bar">
+      <%= form_tag locations_path, method: :get do %>
+        <%= text_field_tag :query,
+          params[:query],
+          placeholder: "  Search for locations", class: "input" %>
+
+          <%= submit_tag "Search", class: "round-button-small" %>
+      <% end %>
+    </div>
   </div>
   <h3 class="my-5">Finding places</h3>
 
@@ -16,7 +24,7 @@
            <% end %>
             <div class="card-trip-infos mb-5 d-flex justify-content-between">
                 <p id="location-name" class="pt-2"><%= location.name %></p>
-                <p id="location-price" class="pt-2"><%= location.price %> EUR</p>
+                <p id="location-price" class="pt-2"><%= location.price %> €</p>
             </div>
               <!-- <p><%= location.description %></p> -->
         </div>  <!-- END OF COL  -->
