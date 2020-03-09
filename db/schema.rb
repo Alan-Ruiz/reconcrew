@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_04_133504) do
+
+ActiveRecord::Schema.define(version: 2020_03_09_095430) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +46,7 @@ ActiveRecord::Schema.define(version: 2020_03_04_133504) do
     t.datetime "updated_at", null: false
     t.integer "amount_cents", default: 0, null: false
     t.string "dates"
+    t.string "checkout_session_id"
     t.index ["location_id"], name: "index_bookings_on_location_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
@@ -71,8 +74,8 @@ ActiveRecord::Schema.define(version: 2020_03_04_133504) do
     t.float "latitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "name"
     t.integer "price_cents", default: 0, null: false
+    t.string "name"
     t.index ["category_id"], name: "index_locations_on_category_id"
     t.index ["user_id"], name: "index_locations_on_user_id"
   end
@@ -85,6 +88,17 @@ ActiveRecord::Schema.define(version: 2020_03_04_133504) do
     t.datetime "updated_at", null: false
     t.index ["chat_id"], name: "index_messages_on_chat_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.integer "recipient_id"
+    t.integer "actor_id"
+    t.datetime "read_at"
+    t.string "action"
+    t.integer "notifiable_id"
+    t.string "notifiable_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "reviews", force: :cascade do |t|

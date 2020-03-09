@@ -21,7 +21,7 @@
              <% end %>
               <div class="d-flex justify-content-between pt-3">
                   <p class="location-name"><%= location.name %></p>
-                  <p id="location-price"><%= location.price %> EUR</p>
+                  <p id="location-price"><%= humanized_money_with_symbol(location.price) %> EUR</p>
               </div>
               <!-- <p><%= location.description %></p> -->
             </div>  <!-- END OF COL  -->
