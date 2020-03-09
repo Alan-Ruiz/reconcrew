@@ -36,7 +36,7 @@ class BookingsController < ApplicationController
         payment_method_types: ['card'],
         line_items: [{
           name: @booking.location.name,
-          # images: @booking.location.photos,
+          images: @booking.location.photos,
           amount: @booking.amount_cents,
           currency: 'eur',
           quantity: 1
@@ -46,11 +46,12 @@ class BookingsController < ApplicationController
       )
 
       @booking.update(checkout_session_id: session.id)
-      redirect_to new_location_booking_payment_path(@booking.location, @booking)
+      redirect_to location_booking_confirmation_path(@booking.id, @booking)
     else
       render 'locations/show'
     end
-  # end
+
+
 
     def confirmation
       # @location = Location.find(params[:location_id])
