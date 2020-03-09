@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_04_133504) do
+ActiveRecord::Schema.define(version: 2020_03_09_170711) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +61,22 @@ ActiveRecord::Schema.define(version: 2020_03_04_133504) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "extras", force: :cascade do |t|
+    t.string "name"
+    t.boolean "check"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "locationextras", force: :cascade do |t|
+    t.bigint "location_id"
+    t.bigint "extra_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["extra_id"], name: "index_locationextras_on_extra_id"
+    t.index ["location_id"], name: "index_locationextras_on_location_id"
+  end
+
   create_table "locations", force: :cascade do |t|
     t.string "address"
     t.text "description"
@@ -73,7 +89,11 @@ ActiveRecord::Schema.define(version: 2020_03_04_133504) do
     t.datetime "updated_at", null: false
     t.string "name"
     t.integer "price_cents", default: 0, null: false
+    t.bigint "extra_id"
+    t.integer "space"
+    t.integer "capacity"
     t.index ["category_id"], name: "index_locations_on_category_id"
+    t.index ["extra_id"], name: "index_locations_on_extra_id"
     t.index ["user_id"], name: "index_locations_on_user_id"
   end
 
@@ -115,7 +135,10 @@ ActiveRecord::Schema.define(version: 2020_03_04_133504) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "bookings", "locations"
   add_foreign_key "bookings", "users"
+  add_foreign_key "locationextras", "extras"
+  add_foreign_key "locationextras", "locations"
   add_foreign_key "locations", "categories"
+  add_foreign_key "locations", "extras"
   add_foreign_key "locations", "users"
   add_foreign_key "messages", "chats"
   add_foreign_key "messages", "users"

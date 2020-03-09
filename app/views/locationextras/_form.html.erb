@@ -1,0 +1,4 @@
+<%= simple_form_for [@location, @locationextras] do |f| %>
+  <%= f.association :extra %>
+  <%= f.submit "add a extra", class: "btn btn-danger" %>
+<% end %>

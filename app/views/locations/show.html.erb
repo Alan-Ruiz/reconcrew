@@ -52,6 +52,18 @@
           <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar"%><%= link_to @location.user.username, profile_path(@location.user), class: "owner-name" %>
         </div>
 
+        <div class="extras">
+          <% if current_user == @location.user %>
+          <%= render './locationextras/form' %>
+          <% end %>
+        </div>
+
+        <div>
+          <% @location.locationextras.each do |locationextra| %>
+          <%= locationextra.extra.name %>
+          <% end %>
+        </div>
+
           <div class="desc-msg border-bottom">
           <p class="loc-desc" ><%= @location.description %></p><!-- Deleted py-3 from class -->
           <div class="msg-lnk d-flex">
