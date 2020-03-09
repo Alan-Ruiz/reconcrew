@@ -15,7 +15,9 @@ import 'mapbox-gl/dist/mapbox-gl.css'; // <-- you need to uncomment the styleshe
 
 import { initMapbox } from '../plugins/init_mapbox.js';
 import {disableButton} from '../components/disable_button.js';
+import {carouselPopUp} from '../plugins/carousel_popup.js'
 
 initMapbox();
+carouselPopUp();
 
 
