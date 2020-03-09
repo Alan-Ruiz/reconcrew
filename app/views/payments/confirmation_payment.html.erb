@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="confirmation" >
+    <div class="msg text-center ">
+      <i class="fas fa-check-circle text-center "></i>
+      <h1 class="text-center"> Your booking has been requested. </h1>
+      <p class="first text-center"> The owner has 24h to accept the request. You can send him a message and if they agree you can do your payment. Thank you for trusting <span class="logo">RECon24</span>!</p>
+      <div class="d-flex justify-content-center">
+        <%= cl_image_tag @booking.location.photos.first.key, class:'d-block w-50 align-items-center' %>
+      </div>
+      <p> You can view your booking at your <%= link_to "profile", dashboard_path, class: "prof-link" %> page </p>
+      <p>Check <%= link_to @booking.location.user.username, profile_path(@booking.location.user) %> profile page</p>
+    </div>
+    <div class="btn-confir d-flex justify-content-center ">
+      <button class="confir-btn col-md-4 text-center"><%= link_to "Keep Searching", root_path%></button>
+    </div>
+</div>
+</div>

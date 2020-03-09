@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :bookings, only: %i[create new] do
       resources :payments, only: :new
       get 'confirmation', to: 'bookings#confirmation'
+      get 'confirmation_payment', to: 'payment#confirmation_payment'
       # resources :reviews, only: %i[index create new]
     end
     resources :availabilities, only: :index, controller: 'locations/availabilities'
