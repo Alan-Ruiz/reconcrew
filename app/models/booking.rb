@@ -12,12 +12,15 @@ class Booking < ApplicationRecord
   validates :dates, presence: true
 
   after_create :create_booked_notification
-  after_update :create_notification #, if: :will_save_change_to_status?
+  after_update :create_notification
 
   private
 
   def create_notification
-    new_status = saved_changes["status"].last
+    new_status = saved_changes["status"]&.last
+
+    return unless new_status
+
     case new_status
     when 'comfirm' then create_confirmed_notification
     when 'canceled' then create_canceled_notification

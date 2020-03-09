@@ -50,11 +50,9 @@
                   <p>Canceled</p>
                 <% elsif booking.status == "comfirm" %>
                   <p>Accepted</p>
-                  <% if booking.reviews %>
+                <% elsif booking.status == "paid" %>
+                  <p>Paid</p>
                   <%= link_to "leave a review", new_booking_review_path(booking) %>
-                  <% end %>
-                  <% else %>
-                  hello
                 <% end %>
             </div>
           </div>
@@ -82,11 +80,14 @@
                   <p>Canceled</p>
                 <% elsif booking.status == "comfirm" %>
                   <p>Accepted</p>
-                  <% if booking.reviews %>
+                  <%= link_to "Pay", new_location_booking_payment_path(booking.location, booking) %>
+                <% elsif booking.status == "paid" %>
+                  <p>Paid</p>
+                  <%# if booking.reviews %>
                   <%= link_to "leave a review", new_booking_review_path(booking) %>
-                  <% end %>
-                  <% else %>
-                  hello
+                  <%# end %>
+                  <%# else %>
+                  <!-- hello -->
                 <% end %>
             </div>
           </div>
