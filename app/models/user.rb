@@ -6,5 +6,9 @@ class User < ApplicationRecord
 
   has_many :bookings
   has_many :locations
+
+  has_many :notifications, foreign_key: :recipient_id
+
   has_one_attached :photo
+
 end
