@@ -36,7 +36,7 @@ class BookingsController < ApplicationController
         payment_method_types: ['card'],
         line_items: [{
           name: @booking.location.name,
-          images: @booking.location.photos,
+          # images: @booking.location.photos,
           amount: @booking.amount_cents,
           currency: 'eur',
           quantity: 1
