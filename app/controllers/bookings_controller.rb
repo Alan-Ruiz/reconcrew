@@ -41,7 +41,7 @@ class BookingsController < ApplicationController
           currency: 'eur',
           quantity: 1
         }],
-        success_url: location_booking_confirmation_url(@booking.location, @booking),
+        success_url: location_booking_confirmation_payment_url(@booking.location, @booking),
         cancel_url: root_url
       )
 
