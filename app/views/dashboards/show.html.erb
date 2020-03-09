@@ -82,7 +82,7 @@
                   <p>Canceled</p>
                 <% elsif booking.status == "comfirm" %>
                   <p>Accepted</p>
-                  <% if booking.reviews.nil? %>
+                  <% if booking.reviews %>
                   <%= link_to "leave a review", new_booking_review_path(booking) %>
                   <% end %>
                   <% else %>
