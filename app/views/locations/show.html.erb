@@ -76,7 +76,7 @@
 
         <div class="col-lg-4 col-sm-12">
           <div class="booking-dets border rounded p-4">
-            <div class="price-top border-bottom"><strong><%= @location.price %>€</strong>/day</div>
+            <div class="price-top border-bottom"><strong><%= (@location.price) %>€</strong>/day</div>
             <div class="dates">
               <%= render './bookings/form' %>
             </div>

@@ -1,7 +1,12 @@
+
+.signup h2 {
+  margin-bottom: 20px;
+}
+
 .signup{
   justify-content: center;
   width: 40%;
-  padding:140px;
+  padding:50px;
 }
 
 #container{
@@ -10,10 +15,19 @@
 }
 
 .foto {
- background-image: url('https://images.unsplash.com/photo-1512025316832-8658f04f8a83?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1351&q=80');
-  height:80vh;
-  width:80%;
+  background: linear-gradient( rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1) ), url('https://images.unsplash.com/photo-1512025316832-8658f04f8a83?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1351&q=80');
+  // background-image: url('');
+  height: 93vh;
+  width:60%;
   background-size: cover;
+  background-position: center;
+  filter: grayscale(100%);
+}
+.signup a {
+  color: red;
+}
+.signup a:hover {
+  color: black;
 }
 
 

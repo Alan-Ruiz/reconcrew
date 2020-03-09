@@ -30,4 +30,10 @@ Rails.application.routes.draw do
   authenticate :user, lambda { |u| u.admin } do
     mount Sidekiq::Web => '/sidekiq'
   end
+
+  resources :notifications, only: [:index] do
+    collection do
+      post :mark_as_read
+    end
+  end
 end

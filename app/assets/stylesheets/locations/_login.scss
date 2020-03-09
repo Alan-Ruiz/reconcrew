@@ -1,16 +1,20 @@
+#log-in h2 {
+  margin-bottom: 20px;
+}
+
 .login {
-  justify-content: center;
-  width:40%;
-  padding:130px;
+justify-content: center;
+width:40%;
+padding:50px;
 }
 
 .picture {
- background-image: url('https://www.leicashop.com/media/catalog/product/cache/2/image/9df78eab33525d08d6e5fb8d27136e95/2/3/23861_40.jpg');
-  height:80vh;
-  width:80%;
+  background: linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4) ), url('https://www.leicashop.com/media/catalog/product/cache/2/image/9df78eab33525d08d6e5fb8d27136e95/2/3/23861_40.jpg');
+  height: 93vh;
+  width:70%;
   background-size: cover;
-  background-position: 0 -43px;
-  filter: brightness(80%);
+  background-position: center;
+  filter: grayscale(100%);
 }
 
 input[type="checkbox"] {
@@ -27,4 +31,10 @@ input[type="checkbox"] {
 .not-registered {
   opacity: 0.8;
   margin-bottom: 0px;
+}
+#log-in a {
+  color: red;
+}
+#log-in a:hover {
+  color: black;
 }
