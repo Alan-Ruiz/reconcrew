@@ -26,7 +26,7 @@
   &--input {
     flex: 1 1 auto;
     padding: 12px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    border: 1px solid #e0e0e0;
     font-size: 18px;
     outline: none;
     transition: border-color 150ms;
@@ -35,7 +35,7 @@
 
     &:hover,
     &:focus {
-      border: 1px solid #3f94f9;
+      border: 1px solid black;
     }
   }
 
@@ -43,8 +43,8 @@
     flex: 0 1 auto;
     height: 100%;
     padding: 12px 48px;
-    background: #3f94f9;
-    border: 1px solid #3f94f9;
+    background: red;
+    border: 1px solid red;
     color: white;
     font-size: 18px;
     outline: none;
@@ -80,6 +80,34 @@
     overflow-x: hidden;
     overflow-y: auto;
   }
+}
+
+.message-row {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.my-message {
+  justify-content: flex-end;
+  margin-right: 10px;
+}
+
+.other-message {
+  justify-content: flex-start;
+  margin-left: 10px;
+}
+.other-message .message--text {
+  background-color: green;
+  color: white;
+  padding: 8px 22px;
+  border-radius: 0 15px 15px 15px;
+}
+.my-message .message--text {
+  background-color: black;
+  color: white;
+  padding: 8px 22px;
+  border-radius: 15px 0 15px 15px;
 }
 
 .message {

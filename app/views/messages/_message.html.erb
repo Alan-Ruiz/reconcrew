@@ -1,15 +1,18 @@
-<div class="message">
-  <div class="message--header">
-    <span class="message--author">
-      <%= message.user.username %>
-    </span>
-    <span class="message--time">
-      <%= message.message_time %>
-    </span>
-  </div>
-  <div class="message--text">
-    <% message.body.lines.each do |line| %>
-      <p><%= line %></p>
-    <% end %>
+<div class="message-row <%= current_user == message.user ? 'my-message' : 'other-message' %>">
+  <div class="message">
+    <div class="message--header">
+      <div class="message--text">
+        <% message.body.lines.each do |line| %>
+          <p><%= line %></p>
+        <% end %>
+      </div>
+      <span class="message--author">
+        <%= message.user.username %>
+      </span>
+      <span class="message--time">
+        <%= message.message_time %>
+      </span>
+    </div>
   </div>
 </div>
+
