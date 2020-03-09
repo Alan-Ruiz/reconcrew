@@ -23,10 +23,22 @@ basement = Category.create!(name: "basement")
 toilet = Category.create!(name: "toilet")
 restaurant = Category.create!(name: "restaurant")
 
+foto_10 = URI.open("https://static.techspot.com/images2/news/bigimage/2019/03/2019-03-09-image-6.jpg")
 david = User.create!(username: "Master Chief", email: 'david@gmail.com', password: '123456')
+david.photo.attach(io: foto_10, filename: 'nes.jpg', content_type: 'image/jpg')
+
+foto_11 = URI.open("https://caloosabelle.com/wp-content/uploads/2019/11/cb-11-28-vet.jpg")
 bea = User.create!(username: "Liutenant Commander", email: 'bea@gmail.com', password: '123456')
+bea.photo.attach(io: foto_11, filename: 'nes.jpg', content_type: 'image/jpg')
+
+foto_12 = URI.open("https://newsimg.bbc.co.uk/media/images/40770000/jpg/_40770007_newlazap203copy.jpg")
 rado = User.create!(username: "Capitan General", email: 'rado@gmail.com', password: '123456')
+rado.photo.attach(io: foto_12, filename: 'nes.jpg', content_type: 'image/jpg')
+
+foto_13 = URI.open("https://www.pandasecurity.com/mediacenter/src/uploads/2016/02/boss.jpg")
 alán = User.create!(username: "The Boss", email: 'alan@gmail.com', password: '123456')
+alán.photo.attach(io: foto_13, filename: 'nes.jpg', content_type: 'image/jpg')
+
 
 foto_1 = URI.open("https://90l.tribuna.com/images/d0/cf/c9/d0cfc9d62a33492086eb7811757577d0500x500@2x.jpg")
 pepe = User.create!(username: "Pepe", email: "pepe@gmail.com", password: "123456")
