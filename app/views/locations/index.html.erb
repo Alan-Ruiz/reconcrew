@@ -16,7 +16,7 @@
            <% end %>
             <div class="card-trip-infos mb-5 d-flex justify-content-between">
                 <p id="location-name" class="pt-2"><%= location.name %></p>
-                <p id="location-price" class="pt-2"><%= location.price %> EUR</p>
+                <p id="location-price" class="pt-2"><%= humanized_money_with_symbol(location.price) %> EUR</p>
             </div>
               <!-- <p><%= location.description %></p> -->
         </div>  <!-- END OF COL  -->
