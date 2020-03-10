@@ -4,7 +4,8 @@ def random_weekdays
   size = rand(1..Location::WEEKDAYS.size)
   Location::WEEKDAYS.sample(size)
 end
-
+Locationextra.destroy_all
+Extra.destroy_all
 Chat.destroy_all
 Review.destroy_all
 Booking.destroy_all
@@ -12,6 +13,18 @@ Location.destroy_all
 Category.destroy_all
 User.destroy_all
 Booking.destroy_all
+
+# Extras
+Extra.create(name: 'Natural Light')
+Extra.create(name: 'Outside Noice')
+Extra.create(name: 'Plugs')
+Extra.create(name: 'Toilet')
+Extra.create(name: 'WiFi')
+Extra.create(name: 'Drinking Water')
+Extra.create(name: 'APR For Rails')
+Extra.create(name: 'APT For Action Scens')
+Extra.create(name: 'Loud Filming Noise Allowed')
+Extra.create(name: 'Location Remodel Alowed')
 
 # categories
 kitchen = Category.create!(name: "kitchen")
