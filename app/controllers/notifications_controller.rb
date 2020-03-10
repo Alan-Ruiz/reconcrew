@@ -5,6 +5,7 @@ class NotificationsController < ApplicationController
   def index; end
 
   def mark_as_read
+    skip_authorization
     @notifications.update_all(read_at: Time.zone.now)
     render json: { sucess: true}, status: :ok
   end
