@@ -13,6 +13,8 @@ class LocationsController < ApplicationController
 
   def show
     authorize @location
+    @locationextras = Locationextra.new
+    authorize @locationextras
     @bookings = @location.bookings
     @reviews = []
     @bookings.each do |booking|
@@ -44,6 +46,7 @@ class LocationsController < ApplicationController
     else
       render :new
     end
+
   end
 
   private
@@ -60,7 +63,7 @@ class LocationsController < ApplicationController
 
   def location_params
     params.require(:location).permit(
-      :name, :price, :address, :description, :category_id,
+      :name, :price, :address, :description, :extra_id, :space, :capacity, :category_id,
       available_weekdays: [], photos: []
     )
   end

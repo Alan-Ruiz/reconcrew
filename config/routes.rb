@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
   resources :locations do
+    resources :locationextras, only: :create
     # TODO: Remove #new action when Booking widget is available
     resources :bookings, only: %i[create new] do
       resources :payments, only: :new
