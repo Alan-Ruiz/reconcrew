@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(version: 2020_03_10_142840) do
     t.boolean "check"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "icon"
+    t.string "icon"
   end
 
   create_table "locationextras", force: :cascade do |t|
