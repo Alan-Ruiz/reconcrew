@@ -1,6 +1,6 @@
 class LocationsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
-  before_action :set_location, only: [:show]
+  before_action :set_location, only: [:show, :edit, :update]
 
   def index
     if params[:query].present?
@@ -27,6 +27,19 @@ class LocationsController < ApplicationController
     end_date = (start_date + 1.month).end_of_month
     @available_dates = @location.available_dates(start_date, end_date)
     puts "test"
+  end
+
+  def edit
+    authorize @location
+  end
+
+  def update
+    if @location.update(location_params)
+      redirect_to location_path(@location)
+    else
+      render :edit
+    end
+    authorize @location
   end
 
   def new
