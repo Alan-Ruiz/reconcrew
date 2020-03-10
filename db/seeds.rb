@@ -15,6 +15,18 @@ Category.destroy_all
 User.destroy_all
 Booking.destroy_all
 
+# Extras
+Extra.create(name: 'Natural Light')
+Extra.create(name: 'Outside Noice')
+Extra.create(name: 'Plugs')
+Extra.create(name: 'Toilet')
+Extra.create(name: 'WiFi')
+Extra.create(name: 'Drinking Water')
+Extra.create(name: 'APR For Rails')
+Extra.create(name: 'APT For Action Scens')
+Extra.create(name: 'Loud Filming Noise Allowed')
+Extra.create(name: 'Location Remodel Alowed')
+
 # categories
 kitchen = Category.create!(name: "kitchen")
 pub = Category.create!(name: "pub")

@@ -1,6 +1,8 @@
 const dateSelec = document.getElementById("date-selec")
 
-dateSelec.addEventListener("change", (event) => {
+if (dateSelec){
+
+  dateSelec.addEventListener("change", (event) => {
   // const arrOfDates = event.target.value.split(', ');
   const numOfDays = event.target.value.split(', ').length;
   let totalPriceDays = document.getElementById('total-price-days');
@@ -10,3 +12,4 @@ dateSelec.addEventListener("change", (event) => {
   totalPriceDays.innerText = numOfDays;
   totalPrice.innerText = numOfDays * locationPrice;
 });
+}

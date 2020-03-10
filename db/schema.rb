@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_09_210147) do
+
+ActiveRecord::Schema.define(version: 2020_03_10_112011) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,13 +70,6 @@ ActiveRecord::Schema.define(version: 2020_03_09_210147) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "favorite_locations", force: :cascade do |t|
-    t.integer "location_id"
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "locationextras", force: :cascade do |t|
     t.bigint "location_id"
     t.bigint "extra_id"
@@ -97,11 +91,13 @@ ActiveRecord::Schema.define(version: 2020_03_09_210147) do
     t.datetime "updated_at", null: false
     t.string "name"
     t.integer "price_cents", default: 0, null: false
-    t.bigint "extra_id"
+    t.string "name"
+    t.bigint "locationextras_id"
     t.integer "space"
     t.integer "capacity"
+    t.integer "plugs"
     t.index ["category_id"], name: "index_locations_on_category_id"
-    t.index ["extra_id"], name: "index_locations_on_extra_id"
+    t.index ["locationextras_id"], name: "index_locations_on_locationextras_id"
     t.index ["user_id"], name: "index_locations_on_user_id"
   end
 
@@ -157,7 +153,7 @@ ActiveRecord::Schema.define(version: 2020_03_09_210147) do
   add_foreign_key "locationextras", "extras"
   add_foreign_key "locationextras", "locations"
   add_foreign_key "locations", "categories"
-  add_foreign_key "locations", "extras"
+  add_foreign_key "locations", "locationextras", column: "locationextras_id"
   add_foreign_key "locations", "users"
   add_foreign_key "messages", "chats"
   add_foreign_key "messages", "users"
