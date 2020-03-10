@@ -16,16 +16,15 @@ User.destroy_all
 Booking.destroy_all
 
 # Extras
-Extra.create(name: 'Natural Light')
-Extra.create(name: 'Outside Noice')
-Extra.create(name: 'Plugs')
-Extra.create(name: 'Toilet')
-Extra.create(name: 'WiFi')
-Extra.create(name: 'Drinking Water')
-Extra.create(name: 'Apt For Rails')
-Extra.create(name: 'Apt For Action Scenes')
-Extra.create(name: 'Loud Filming Noise Allowed')
-Extra.create(name: 'Location Remodel Alowed')
+Extra.create(name: 'Natural Light', icon: '<i class="fas fa-sun"></i>')
+Extra.create(name: 'Sound Proof', icon: '<i class="fas fa-microphone-alt-slash"></i>')
+Extra.create(name: 'Toilet', icon: '<i class="fas fa-restroom"></i>')
+Extra.create(name: 'WiFi', icon: '<i class="fas fa-wifi"></i>')
+Extra.create(name: 'Drinking Water', icon: '<i class="fas fa-tint"></i>')
+Extra.create(name: 'Apt For Rails', icon: '<i class="fas fa-grip-lines-vertical"></i>')
+Extra.create(name: 'Apt For Action Scenes', icon: '<i class="fas fa-exclamation-triangle"></i>')
+Extra.create(name: 'Loud Filming Noise Allowed', icon: '<i class="fas fa-volume-up"></i>')
+Extra.create(name: 'Location Remodel Alowed', icon: '<i class="fas fa-chair"></i>')
 
 # categories
 kitchen = Category.create!(name: "kitchen")

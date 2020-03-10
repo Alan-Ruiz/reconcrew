@@ -50,7 +50,10 @@
 
         <div>
           <% @location.locationextras.each do |locationextra| %>
-          <%= locationextra.extra.name %>
+          <div class="d-flex">
+            <%= locationextra.extra.name %>
+            <%= locationextra.extra.icon.html_safe %>
+          </div>
           <% end %>
         </div>
 
