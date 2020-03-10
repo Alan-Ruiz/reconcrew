@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_10_112011) do
+ActiveRecord::Schema.define(version: 2020_03_10_142840) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(version: 2020_03_10_112011) do
     t.boolean "check"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "icon"
   end
 
   create_table "locationextras", force: :cascade do |t|
