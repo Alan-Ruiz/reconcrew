@@ -129,12 +129,54 @@ color: red;
   font-size: 14px;
 }
 
+.btn-booking {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.grid-inner {
+  display: grid;
+  grid-template-columns: repeat(4, 25vw);
+  grid-template-rows: repeat(2, 250px);
+  grid-auto-flow: dense;
+  background-color: lightgrey;
+}
+
+.first-pic  {
+  grid-row: span 2;
+  grid-column: span 2;
+}
+
+
+
+.grid-item{
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+
 .carousel-item img {
   height:500px;
   object-fit: cover;
 }
 
-.btn-booking {
-  margin-top: 20px;
-  margin-bottom: 20px;
+.carousel-popup {
+  display: none;
+  position: absolute;
+  width: 100vw;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  padding-top: 100px;
+  background-color: rgba(0, 0, 0, 0.8)
 }
+
+.popup-close{
+  font-size: 32px;
+  position: absolute;
+  top: 50px;
+  right: 50px
+
+}
+
+

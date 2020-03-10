@@ -29,28 +29,29 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     @booking.location = @location
     @booking.dates = dates || []
-    @booking.amount =  @booking.dates.length * @location.price
+    @booking.amount =  (@booking.dates.length * @location.price)
     @booking.status = 0
-
-    # session = Stripe::Checkout::Session.create(
-    #   payment_method_types: ['card'],
-    #   line_items: [{
-    #     name: location.name,
-    #     images: #image location,
-    #     amount: @booking.amount,
-    #     currency: 'eur',
-    #     quantity: 1
-    #   }],
-    #   success_url: order_url(order),
-    #   cancel_url: order_url(order)
-    # )
-
     if @booking.save
-      redirect_to location_booking_confirmation_path(@booking.location, @booking)
-      # booking.update(checkout_session_id: session.id)
+      session = Stripe::Checkout::Session.create(
+        payment_method_types: ['card'],
+        line_items: [{
+          name: @booking.location.name,
+          # images: @booking.location.photos,
+          amount: @booking.amount_cents,
+          currency: 'eur',
+          quantity: 1
+        }],
+        success_url: location_booking_confirmation_payment_url(@booking.location, @booking),
+        cancel_url: root_url
+      )
+
+      @booking.update(checkout_session_id: session.id)
+      redirect_to location_booking_confirmation_path(@booking.id, @booking)
     else
       render 'locations/show'
     end
+
+
 
     def confirmation
       # @location = Location.find(params[:location_id])
@@ -58,6 +59,10 @@ class BookingsController < ApplicationController
       # authorize @location
       authorize @booking
     end
+  end
+
+  def show
+    @order = current_user.orders.find(params[:id])
   end
 
   private

@@ -1,5 +1,7 @@
 #list-pic {
-  background-image: url("https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80");
-  background-repeat: no-repeat;
-  background-position: cover;
+  background: url('https://images.unsplash.com/photo-1440404653325-ab127d49abc1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80');
+  height: 93vh;
+  width:40%;
+  background-position: center;
+  filter: grayscale(100%);
 }

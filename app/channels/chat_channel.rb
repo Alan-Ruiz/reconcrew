@@ -22,7 +22,10 @@ class ChatChannel < ApplicationCable::Channel
   def render(message)
     ApplicationController.render(
           partial: 'messages/message',
-          locals: {message: message}
+          locals: {
+            message: message,
+            current_user: current_user
+          }
       )
   end
 end

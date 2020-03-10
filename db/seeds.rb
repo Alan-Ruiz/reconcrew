@@ -23,14 +23,26 @@ basement = Category.create!(name: "basement")
 toilet = Category.create!(name: "toilet")
 restaurant = Category.create!(name: "restaurant")
 
+foto_10 = URI.open("https://static.techspot.com/images2/news/bigimage/2019/03/2019-03-09-image-6.jpg")
 david = User.create!(username: "Master Chief", email: 'david@gmail.com', password: '123456')
+david.photo.attach(io: foto_10, filename: 'nes.jpg', content_type: 'image/jpg')
+
+foto_11 = URI.open("https://caloosabelle.com/wp-content/uploads/2019/11/cb-11-28-vet.jpg")
 bea = User.create!(username: "Liutenant Commander", email: 'bea@gmail.com', password: '123456')
+bea.photo.attach(io: foto_11, filename: 'nes.jpg', content_type: 'image/jpg')
+
+foto_12 = URI.open("https://newsimg.bbc.co.uk/media/images/40770000/jpg/_40770007_newlazap203copy.jpg")
 rado = User.create!(username: "Capitan General", email: 'rado@gmail.com', password: '123456')
+rado.photo.attach(io: foto_12, filename: 'nes.jpg', content_type: 'image/jpg')
+
+foto_13 = URI.open("https://www.pandasecurity.com/mediacenter/src/uploads/2016/02/boss.jpg")
 alán = User.create!(username: "The Boss", email: 'alan@gmail.com', password: '123456')
+alán.photo.attach(io: foto_13, filename: 'nes.jpg', content_type: 'image/jpg')
 
 
+foto_1 = URI.open("https://90l.tribuna.com/images/d0/cf/c9/d0cfc9d62a33492086eb7811757577d0500x500@2x.jpg")
 pepe = User.create!(username: "Pepe", email: "pepe@gmail.com", password: "123456")
-
+pepe.photo.attach(io: foto_1, filename: 'nes.jpg', content_type: 'image/jpg')
 
 file_1 = URI.open('https://i.pinimg.com/originals/83/f4/a1/83f4a12fe2dbad875bef2b4fa5453868.jpg')
 location_1 = Location.create!(available_weekdays: random_weekdays, name: "Small kitchen", price: 55, description: "Brand new, haven't used it yet.", category: Category.find_by_name("kitchen"), user: User.last, address: "Plaza palmeras 6")
@@ -46,8 +58,10 @@ location_4 = Location.create!(available_weekdays: random_weekdays,name: "Dark ba
 location_4.photos.attach(io: file_4, filename: 'nes.jpeg', content_type: 'image/jpeg')
 
 
-
+foto_2 = URI.open("https://img.etimg.com/thumb/width-640,height-480,imgsize-574454,resizemode-1,msid-69702930/government-notifies-extension-of-pm-kisan-scheme-to-all-farmers.jpg")
 jason = User.create!(username: "Jason", email: "jason@gmail.com", password: "123456")
+jason.photo.attach(io: foto_2, filename: 'nes.jpg', content_type: 'image/jpg')
+
 
 file_5 = URI.open("https://www.mydomaine.com/thmb/mjdI0zvOEKI5qHcKeEEizGtLFjY=/700x467/filters:no_upscale():max_bytes(150000):strip_icc()/cdn.cliqueinc.com__cache__posts__221714__small-kitchen-design-ideas-221714-1492471224025-image.700x0c-a8344d6cc05346559b7bbb63d36b9918.jpg")
 location_5 = Location.create!(available_weekdays: random_weekdays,name: "Big kitchen", price: 23, description: "Works great, only a few scratches from regular use.", category: apartment, user: jason, address: "Calle Embajadores 130")
@@ -58,8 +72,9 @@ location_6 = Location.create!(available_weekdays: random_weekdays,name: "Spanish
 location_6.photos.attach(io: file_6, filename: 'nes.jpg', content_type: 'image/jpg')
 
 
-
+foto_3 = URI.open("https://www.theolivepress.es/wp-content/uploads/2018/06/terminator.jpg")
 terminator = User.create!(username: "Terminator", email: "terminator@gmail.com", password: "123456")
+terminator.photo.attach(io: foto_3, filename: 'nes.jpg', content_type: 'image/jpg')
 
 file_7 = URI.open("https://saltandblues.com/wp-content/uploads/2019/07/living-room-warm-interior-paint-colors-for-2015-warm-paint-colors-for-living-room-rooms-family-net.jpg")
 location_7 = Location.create!(available_weekdays: random_weekdays,name: "Warm living room", price: 5, description: "Went to the past and stole this from a hipster, it kinda sucks.", category: living_room, user: terminator, address: "Calle Embajadores 110")
@@ -70,16 +85,20 @@ location_8 = Location.create!(available_weekdays: random_weekdays,name: "Creepy 
 location_8.photos.attach(io: file_8, filename: 'nes.jpg', content_type: 'image/jpg')
 
 
-
+foto_4 = URI.open("https://i.pinimg.com/originals/b5/87/3e/b5873e4acafc5ebc7d5043c355dd85bf.jpg")
 fernando = User.create!(username: "Fernando", email: "fernando@gmail.com", password: "123456")
+fernando.photo.attach(io: foto_4, filename: 'nes.jpg', content_type: 'image/jpg')
+
 
 file_9 = URI.open("https://www.loscabosguide.com/wp-content/uploads/2018/09/BarEsquina-BahiahotelLOSCABOS11.jpg")
 location_9 = Location.create!(available_weekdays: random_weekdays,name: "Family restaurant", price: 19, description: "It's new, my granma gave me this for christmas but I don't like photography.", category: restaurant, user: fernando, address: "Calle Embajadores")
 location_9.photos.attach(io: file_9, filename: 'nes.jpg', content_type: 'image/jpg')
 
 
-
+foto_5 = URI.open("https://image.freepik.com/free-photo/french-woman-with-baguettes-street-beret_1321-310.jpg")
 charlotte = User.create!(username: "Charlotte", email: "charlotte@gmail.com", password: "123456")
+charlotte.photo.attach(io: foto_5, filename: 'nes.jpg', content_type: 'image/jpg')
+
 
 file_10 = URI.open("https://q-cf.bstatic.com/images/hotel/max1024x768/184/184927791.jpg")
 location_10 = Location.create!(available_weekdays: random_weekdays,name: "Green garden", price: 30, description: "I use it all the time! great image and everything works!.", category: garden, user: charlotte, address: "Calle Juan de Mariana")
@@ -90,7 +109,9 @@ location_11 = Location.create!(available_weekdays: random_weekdays,name: "Wooden
 location_11.photos.attach(io: file_11, filename: 'nes.jpg', content_type: 'image/jpg')
 
 
+foto_6 = URI.open("https://es.web.img2.acsta.net/c_215_290/medias/nmedia/18/35/38/61/19636935.jpg")
 natalie = User.create!(username: "Natalie", email: "natalie@gmail.com", password: "123456")
+natalie.photo.attach(io: foto_6, filename: 'nes.jpg', content_type: 'image/jpg')
 
 file_12 = URI.open("https://d1bvpoagx8hqbg.cloudfront.net/originals/huge-room-big-bathroom-separated-wardrobe-d6512776dde7da2a630ba5cf05e7d08a.jpg")
 file_121 = URI.open("https://iruntheinternet.com/lulzdump/images/giant-toilet-slide-kids-massive-toilet-14047686390.jpg")

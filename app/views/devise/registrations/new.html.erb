@@ -1,5 +1,5 @@
 
-<div id="signup" class="contaiter d-flex align-items-center ">
+<div class="reel-cont d-flex align-items-center ">
 
 
   <div class="foto">
@@ -13,6 +13,7 @@
       <%= f.error_notification %>
 
       <div class="form-inputs">
+        <%= f.input :username %>
         <%= f.input :email,
                     required: true,
                     autofocus: true,
@@ -24,6 +25,7 @@
         <%= f.input :password_confirmation,
                     required: true,
                     input_html: { autocomplete: "new-password" } %>
+        <%= f.input :photo, as: :file %>
       </div>
 
       <div class="form-actions">
