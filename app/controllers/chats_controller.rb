@@ -8,6 +8,7 @@ class ChatsController < ApplicationController
   end
 
   def show
+    @chats = Chat.involving(current_user)
     @chat = Chat.find(params[:id])
     authorize @chat
     @other_user = current_user == @chat.sender ? @chat.recipient : @chat.sender

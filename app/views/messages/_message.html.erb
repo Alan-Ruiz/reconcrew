@@ -1,11 +1,24 @@
 <div class="message-row <%= current_user == message.user ? 'my-message' : 'other-message' %>">
   <div class="message">
     <div class="message--header">
-      <div class="message--text">
-        <% message.body.lines.each do |line| %>
-          <p><%= line %></p>
+      <div class="<%= current_user == message.user ? 'd-flex justify-content-end' : 'd-flex justify-content-start' %>">
+        <% if current_user == message.user %>
+          <div class="message--text">
+            <% message.body.lines.each do |line| %>
+              <p><%= line %></p>
+            <% end %>
+          </div>
+          <%= cl_image_tag current_user.photo.key, class: "avatar-small ml-2" %>
+        <% else %>
+          <%= cl_image_tag @other_user.photo.key, class: "avatar-small mr-2" %>
+          <div class="message--text">
+            <% message.body.lines.each do |line| %>
+              <p><%= line %></p>
+            <% end %>
+          </div>
         <% end %>
       </div>
+
       <span class="message--author">
         <%= message.user.username %>
       </span>
