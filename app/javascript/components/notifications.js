@@ -18,6 +18,7 @@ function markAsRead() {
 
 function refreshCounter(number) {
   const counterElement = document.getElementById('counter');
+  console.log(number)
   counterElement.innerHTML = number;
 };
 
@@ -27,6 +28,7 @@ const counter = document.getElementById('counter');
 
 if (notifications && counter) {
   setCallback(({notification, count}) => {
+    console.log(notification, count)
     notifications.insertAdjacentHTML("afterbegin", notification);
     counter.innerHTML = count;
   });
