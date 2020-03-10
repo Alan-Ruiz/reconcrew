@@ -9,7 +9,7 @@ export default class extends Flatpickr {
     this.config = {
       altInput: true,
       altFormat: 'd-m-Y',
-      showMonths: 2,
+      showMonths: 1,
       mode: 'multiple'
     }
 
