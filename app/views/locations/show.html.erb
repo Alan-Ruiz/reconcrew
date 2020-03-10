@@ -41,7 +41,9 @@
 
         <div class="extras">
           <% if current_user == @location.user %>
-          <%= render './locationextras/form' %>
+            <div id="extras-form">
+              <%= render './locationextras/form'%>
+            </div>
           <% end %>
         </div>
 
@@ -53,6 +55,9 @@
 
           <div class="desc-msg border-bottom">
           <p class="loc-desc" ><%= @location.description %></p><!-- Deleted py-3 from class -->
+
+          <button type="button" id="extras-button">Add extra information<i class="fas fa-info"></i></button>
+
           <div class="msg-lnk d-flex">
             <span class="msg-link"><%= link_to "Message #{@location.user.username}", chats_path(sender_id: current_user, recipient_id: @location.user), method: :post %><i class="far fa-comment-dots"></i></span>
           </div>

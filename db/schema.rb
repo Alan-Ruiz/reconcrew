@@ -10,7 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 2020_03_10_112011) do
 
   # These are extensions that must be enabled in order to support this database
@@ -91,7 +90,6 @@ ActiveRecord::Schema.define(version: 2020_03_10_112011) do
     t.datetime "updated_at", null: false
     t.string "name"
     t.integer "price_cents", default: 0, null: false
-    t.string "name"
     t.bigint "locationextras_id"
     t.integer "space"
     t.integer "capacity"
