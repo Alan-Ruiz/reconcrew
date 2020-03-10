@@ -34,7 +34,7 @@
 
       <div class="loc-info">
         <div class="avatar-name d-flex">
-          <% if current_user.photo.attached? %>
+          <% if @location.user.photo.attached? %>
               <%= cl_image_tag @location.user.photo.key, class: "avatar dropdown-toggle", id: "navbar-wagon-menu" %>
             <% else %>
               <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbar-wagon-menu"%>
