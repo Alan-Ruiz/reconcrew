@@ -13,4 +13,9 @@ class Chat < ApplicationRecord
     scope :between, -> (user_A, user_B) {
       where("(chats.sender_id = ? AND chats.recipient_id = ?) OR (chats.sender_id = ? AND chats.recipient_id = ?)", user_A, user_B, user_B, user_A)
     }
+
+    scope :ordered_by_last_active, -> {
+      includes(:messages).order('messages.created_at DESC')
+    }
+
 end

@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 2020_03_10_112011) do
+ActiveRecord::Schema.define(version: 2020_03_10_153258) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,6 +67,7 @@ ActiveRecord::Schema.define(version: 2020_03_10_112011) do
     t.boolean "check"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "icon"
   end
 
   create_table "locationextras", force: :cascade do |t|
@@ -91,7 +91,6 @@ ActiveRecord::Schema.define(version: 2020_03_10_112011) do
     t.datetime "updated_at", null: false
     t.string "name"
     t.integer "price_cents", default: 0, null: false
-    t.string "name"
     t.bigint "locationextras_id"
     t.integer "space"
     t.integer "capacity"
