@@ -21,15 +21,12 @@
 <!-- RIGHT SIDE DETAILS -->
 
 <!-- END OF RIGHT SIDE -->
-
-
-
 <div class="show-container">
   <div class="loc-dets-cont row "> <!-- Deleted py-4 from class -->
     <!-- LEFT SIDE DETAILS -->
     <div class="location-details col-lg-8 col-sm-12">
       <div class="loc-title d-flex justify-content-between border-bottom align-items-center">
-        <h3><%= @location.name%></h3> <br><br>
+        <h3><%= @location.name%></h3> <%= link_to 'Edit', edit_location_path(@location), class: 'edit_link' %><br><br>
       </div> <!-- END OF LOCATION NAME -->
 
       <div class="loc-info">

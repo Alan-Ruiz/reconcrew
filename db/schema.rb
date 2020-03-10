@@ -12,7 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2020_03_09_210147) do
 
-
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -96,11 +95,11 @@ ActiveRecord::Schema.define(version: 2020_03_09_210147) do
     t.float "latitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
     t.integer "price_cents", default: 0, null: false
     t.bigint "extra_id"
     t.integer "space"
     t.integer "capacity"
-    t.string "name"
     t.index ["category_id"], name: "index_locations_on_category_id"
     t.index ["extra_id"], name: "index_locations_on_extra_id"
     t.index ["user_id"], name: "index_locations_on_user_id"
