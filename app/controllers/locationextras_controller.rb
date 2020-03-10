@@ -1,14 +1,22 @@
 class LocationextrasController < ApplicationController
+
   def create
     @location = Location.find(params[:location_id])
-    @locationextras = Locationextra.new(params.require(:locationextra).permit[:extra])
-    # @locationextras.location = @location
+    @locationextras = Locationextra.new(set_params)
+    @locationextras.location = @location
     authorize @location
     authorize @locationextras
-    if @locationextras.save
-      redirect_to location_path(@location)
-    else
-      render 'location/show'
-    end
+      if @locationextras.save
+        flash[:alert] = 'This extra has been saved'
+      else
+        flash[:alert] = 'This extra already exists'
+      end
+    redirect_to location_path(@location)
+  end
+
+  private
+
+  def set_params
+    params.require(:locationextra).permit(:extra_id)
   end
 end
