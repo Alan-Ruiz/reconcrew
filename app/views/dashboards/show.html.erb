@@ -1,97 +1,139 @@
-<div class="container">
-  <h3>Your Places</h3>
+<div class="reel-cont">
+  <h3 class="text-center mb-5">Your Places</h3>
 
-  <div class="row border-bottom pb-3 mb-5">
-    <% if @locations.empty? %>
-      YOU DONT OWN ANY REAL ESTATE, LOSER
-    <% else %>
-      <% @locations.each do |location| %>
-        <div class="col-lg-4">
-          <div class="card-trip">
-          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
-          <div class="card-trip-infos">
-            <div>
-              <p><%= location.name %></p>
-              <p><%= location.description %></p>
-            </div>
-            <p class="card-trip-pricing"><%= location.price %></p>
-          </div>
-          </div>
-        </div>
-      <% end %> <!-- END OF FOR EACH -->
-    <% end %>
+  <div class="row">
+
+    <div class="col-lg-3">
+      <div class="px-5 text-center">
+        <%= cl_image_tag @user.photo.key, class: "avatar-xlarge"%>
+        <h3 class="border-bottom py-3 mb-3 text-center"><%= @user.username %></h3>
+        <p class="text-left"><i class="far fa-check-circle"></i> Email address verified</p>
+        <p class="text-left"><i class="far fa-check-circle"></i> Phone number </p>
+        <p class="text-left"><i class="far fa-check-circle"></i> Reviews</p>
+      </div>
+    </div> <!-- END OF FIRST COL -->
+
+    <div class="col-lg-9">
+      <button class="reel-accordion">Listed locations</button>
+      <div class="reel-panel active-panel">
+        <div class="row">
+          <% if @locations.empty? %>
+            <p>You did not list any locations yet.</p>
+            <%= link_to "List a location", new_location_path, class: "nav-link" %>
+          <% else %>
+            <% @locations.each do |location| %>
+                <div class="col-lg-4">
+                  <%= link_to location_path(location), class: "card-trip my-3" do %>
+                    <% if location.photos.attached? %>
+                      <%= cl_image_tag location.photos[0].key, style:"object-fit: cover; height: 217.8px;" %>
+                    <% else %>
+                      <img class="card-img-top" src="https://images.unsplash.com/photo-1518353053542-7ea33d942319?ixlib=rb-1.2.1&auto=format&fit=crop&w=1351&q=80" alt="Card image cap">
+                    <% end %> <!-- END OF IF IMAGE ATTACHED -->
+                    <div class="card-trip-infos mb-5 d-flex justify-content-between">
+                        <p id="location-name" class="pt-2 "><%= location.name %></p>
+                        <p id="location-price" class="pt-2"><%= humanized_money_with_symbol(location.price) %></p>
+                    </div> <!-- END OF CARD TRIP INFOS -->
+                  <% end %> <!-- END OF LINK -->
+                </div> <!-- END OF COL LG 4 -->
+            <% end %><!-- END OF EXTERNAL FOR EACH -->
+          <% end %>
+        </div><!-- END OF ROW -->
+      </div> <!-- END OF LISTED LOCATIONS PANEL-->
+
+      <button class="reel-accordion">Pending booking confirmations</button>
+      <div class="reel-panel">
+        <div class="row">
+           <% @locations.each do |location| %>
+            <% location.bookings.each do |booking| %>
+              <div class="col-lg-4">
+                <%= link_to location_path(location), class: "card-trip my-3" do %>
+                  <% if location.photos.attached? %>
+                    <%= cl_image_tag location.photos[0].key, style:"object-fit: cover; height: 217.8px;", class: "single-card-photo" %>
+                  <% else %>
+                    <img class="card-img-top" src="https://images.unsplash.com/photo-1518353053542-7ea33d942319?ixlib=rb-1.2.1&auto=format&fit=crop&w=1351&q=80" alt="Card image cap">
+                  <% end %> <!-- END OF IF IMAGE ATTACHED -->
+                  <div class="card-trip-infos d-flex justify-content-between">
+                    <p id="location-name" class="pt-2"><%= booking.location.name %></p>
+                    <p id="location-price" class="pt-2"><%= humanized_money_with_symbol(booking.location.price) %></p>
+                  </div> <!-- END OF CARD TRIP INFOS -->
+                <% end %> <!-- END OF LINK -->
+                <% if booking.status == "pending" %>
+                  <div class="d-flex justify-content-between mb-3">
+                    <%= simple_form_for booking, method: :patch do |t| %>
+                      <%= t.input :status, as: :hidden, html: { value: 1} %>
+                      <%= t.submit "Accept", class: "btn btn-success btn-sm"%>
+                    <% end %>
+                    <%= simple_form_for booking, method: :patch do |t| %>
+                      <%= t.input :status, as: :hidden, html: { value: 2} %>
+                      <%= t.submit "Reject", class: "btn btn-danger btn-sm"%>
+                    <% end %>
+                  </div>
+                <% elsif booking.status == "canceled" %>
+                  <p id="cancelled">Cancelled</p>
+                <% elsif booking.status == "comfirm" %>
+                  <p id="accepted-pending-paid">Accepted</p>
+                <% elsif booking.status == "paid" %>
+                  <p id="accepted-pending-paid">Paid</p>
+                  <%= link_to "leave a review", new_booking_review_path(booking) %>
+                <% end %> <!-- END OF IF BOOKING PENDING-->
+              </div> <!-- END OF COL LG 4 -->
+
+
+              <% end %><!-- END OF INTERNAL FOR EACH -->
+            <% end %><!-- END OF EXTERNAL FOR EACH -->
+        </div> <!-- END OF ROW -->
+      </div><!-- END OF PENDING PANEL-->
+
+      <button class="reel-accordion">Your bookings</button>
+      <div class="reel-panel">
+        <div class="row">
+          <% @user.bookings.each do |booking| %>
+            <div class="col-lg-4">
+              <%= link_to location_path(booking.location), class: "card-trip my-3" do %>
+                <% if booking.location.photos.attached? %>
+                  <%= cl_image_tag booking.location.photos[0].key, style:"object-fit: cover; height: 217.8px;", class: "single-card-photo" %>
+                <% else %>
+                  <img class="card-img-top" src="https://images.unsplash.com/photo-1518353053542-7ea33d942319?ixlib=rb-1.2.1&auto=format&fit=crop&w=1351&q=80" alt="Card image cap">
+                <% end %> <!-- END OF IF IMAGE ATTACHED -->
+                <div class="card-trip-infos mb-3 d-flex justify-content-between">
+                  <p id="location-name" class="pt-2"><%= booking.location.name %></p>
+                  <p id="location-price" class="pt-2"><%= humanized_money_with_symbol(booking.location.price) %></p>
+                </div> <!-- END OF CARD TRIP INFOS -->
+              <% end %> <!-- END OF LINK -->
+
+            <% if booking.status == "pending" %>
+              <p id="accepted-pending-paid">Pending</p>
+            <% elsif booking.status == "canceled" %>
+              <p id="cancelled">Canceled</p>
+            <% elsif booking.status == "comfirm" %>
+              <p id="accepted-pending-paid">Accepted</p>
+              <%= link_to "Pay", new_location_booking_payment_path(booking.location, booking), class: "btn btn-dark btn-block" %>
+            <% elsif booking.status == "paid" %>
+              <p>Paid</p>
+              <%# if booking.reviews %>
+              <%= link_to "leave a review", new_booking_review_path(booking) %>
+              <%# end %>
+              <%# else %>
+              <!-- hello -->
+            <% end %>
+
+
+
+            </div> <!-- END OF COL 4-->
+          <% end %> <!-- END OF FOR EACH -->
+
+
+
+
+        </div> <!-- END OF ROW <--></-->
+
+
+      </div> <!-- END OF YOUR BOOKINGS -->
+    </div> <!-- END OF SECOND COL -->
   </div> <!-- END OF ROW -->
 </div> <!-- END OF CONTAINER -->
-<div class="container">
-  <h3>Some is trying to book!!</h3>
 
-  <div class="row mb-5">
-    <% @locations.each do |location| %>
-      <% location.bookings.each do |booking| %>
-        <div class="col-lg-4">
-          <div class="card-trips">
-            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
-              <div class="card-trip-infos">
-                <div>
-                  <p><%= booking.location.name %></p>
-                  <p><%= booking.location.description %></p>
-                </div>
-                <p class="card-trip-pricing"><%= booking.location.price %></p>
-                <% if booking.status == "pending" %>
-                  <%= simple_form_for booking, method: :patch do |t| %>
-                    <%= t.input :status, as: :hidden, html: { value: 1} %>
-                    <%= t.submit "Accept" %>
-                    <% end %>
-                  <%= simple_form_for booking, method: :patch do |t| %>
-                    <%= t.input :status, as: :hidden, html: { value: 2} %>
-                    <%= t.submit "Reject" %>
-                    <% end %>
-                <% elsif booking.status == "canceled" %>
-                  <p>Canceled</p>
-                <% elsif booking.status == "comfirm" %>
-                  <p>Accepted</p>
-                <% elsif booking.status == "paid" %>
-                  <p>Paid</p>
-                  <%= link_to "leave a review", new_booking_review_path(booking) %>
-                <% end %>
-            </div>
-          </div>
-        </div>
-      <% end %> <!-- END OF FOR EACH -->
-    <% end %>
-  </div> <!-- END OF CONTAINER -->
-</div>
-<div class="container">
-  <h3>Your bookings</h3>
-  <div class="row mb-5">
-      <% @user.bookings.each do |booking| %>
-        <div class="col-lg-4">
-          <div class="card-trips">
-            <!-- <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg"> -->
-              <div class="card-trip-infos">
-                <div>
-                  <p><%= booking.location.name %></p>
-                  <p><%= booking.location.description %></p>
-                </div>
-                <p class="card-trip-pricing"><%= booking.location.price %></p>
-                <% if booking.status == "pending" %>
-                  <p>Pending</p>
-                <% elsif booking.status == "canceled" %>
-                  <p>Canceled</p>
-                <% elsif booking.status == "comfirm" %>
-                  <p>Accepted</p>
-                  <%= link_to "Pay", new_location_booking_payment_path(booking.location, booking) %>
-                <% elsif booking.status == "paid" %>
-                  <p>Paid</p>
-                  <%# if booking.reviews %>
-                  <%= link_to "leave a review", new_booking_review_path(booking) %>
-                  <%# end %>
-                  <%# else %>
-                  <!-- hello -->
-                <% end %>
-            </div>
-          </div>
-        </div>
-      <% end %> <!-- END OF FOR EACH -->
-  </div> <!-- END OF CONTAINER -->
-</div>
+
+
+
+
