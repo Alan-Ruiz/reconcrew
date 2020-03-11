@@ -29,8 +29,12 @@
               <span class="badge badge-light"><span id="counter" class="notifications text-center"></span></span>
               <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
                 <div id="notifications">
-                  <% current_user.notifications.unread.each do |notification| %>
-                    <%= render partial: "notifications/#{notification.notifiable_type.underscore.pluralize}/#{notification.action}", locals: {notification: notification} %>
+                    <% current_user.notifications.unread.each do |notification| %>
+                  <% if current_user.notification == nil %>
+                    <%= There are no notifications %>
+                  <% else %>
+                      <%= render partial: "notifications/#{notification.notifiable_type.underscore.pluralize}/#{notification.action}", locals: {notification: notification} %>
+                    <% end %>
                   <% end %>
                 <li>
                 </li>
