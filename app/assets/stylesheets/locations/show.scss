@@ -137,10 +137,21 @@ color: red;
 .grid-inner {
   display: grid;
   grid-template-columns: repeat(4, 25vw);
-  grid-template-rows: repeat(2, 250px);
+  grid-template-rows: repeat(2, 200px);
   grid-auto-flow: dense;
   background-color: lightgrey;
-}
+  cursor: pointer !important;
+  border-top: 1.5px solid black;
+  border-left: 1.5px solid black;
+  }
+
+  .grid-inner > div {
+  // padding: 15px;
+  // text-align: center;
+  border-bottom: 1.5px solid black;
+  border-right: 1.5px solid black;
+  }
+
 
 .first-pic  {
   grid-row: span 2;
@@ -168,15 +179,16 @@ color: red;
   top: 0px;
   left: 0px;
   padding-top: 100px;
-  background-color: rgba(0, 0, 0, 0.8)
+  background-color: rgba(0, 0, 0, 0.9)
 }
 
 .popup-close{
   font-size: 32px;
   position: absolute;
   top: 50px;
-  right: 50px
-
+  right: 50px;
+  color: lightgrey;
+  cursor: pointer !important;
 }
 
 

@@ -2,11 +2,12 @@
 <!-- CAROUSEL -->
 <div id="grid-banner" class="grid slide">
   <div class="grid-inner">
-    <% @location.photos.each_with_index do |pic, i| %>
-      <div class="<%= i == 0 ? "first-pic" : "small-pic" %> grid-item carousel-trigger" style="background-image: url(<%= url_for(pic) %>)" ></div>
+    <% @location.photos.take(5).each_with_index do |pic, i| %>
+      <div class="<%= i == 1 ? "first-pic" : "small-pic" %> grid-item carousel-trigger" style="background-image: url(<%= url_for(pic) %>)" ></div>
     <% end %>
   </div>
 </div>
+
  <!--    <div class="carousel-item active">
       <img src="http://cdn.home-designing.com/wp-content/uploads/2018/11/luxury-curtains-for-living-room.jpg" alt="Living-Room" style="width:100%">
     </div>
