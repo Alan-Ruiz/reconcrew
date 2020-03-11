@@ -51,6 +51,14 @@
           <!-- Add location characteristics button -->
           <% if current_user == @location.user %>
             <button type="button" id="extras-button">Add location characteristics</button>
+            <script>
+              const extrasSelect = document.getElementById("extras-button")
+              extrasSelect.addEventListener("click", (displayForm) => {
+                extrasSelect.classList.add('d-none')
+                const extrasForm = document.getElementById("extras-form")
+                extrasForm.classList.add('d-block')
+              });
+            </script>
           <% end %>
 
           <!-- Extras Form -->

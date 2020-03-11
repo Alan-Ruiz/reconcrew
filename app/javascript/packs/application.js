@@ -24,5 +24,5 @@ import {carouselPopUp} from '../plugins/carousel_popup.js'
 initMapbox();
 carouselPopUp();
 
-import '../components/extras-form.js'
+// import '../components/extras-form.js'
 
