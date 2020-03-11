@@ -1,0 +1,31 @@
+.days-custom {
+  justify-content: space-around;
+  margin: 20px;
+  flex-wrap: wrap;
+}
+
+.day-custom {
+  font-weight: bold;
+  font-size: 18px;
+  border: 1px solid #FF0100;
+  padding: 10px 20px;
+  border-radius: 5px;
+  background-color: #fff5f5;
+  margin: 13px 0px;
+  opacity: 0.4;
+  &:hover {
+    opacity: 1;
+    cursor: pointer;
+  }
+}
+
+.day-active {
+  font-weight: bold;
+  font-size: 18px;
+  border: 1px solid #FF0100;
+  padding: 10px 20px;
+  border-radius: 5px;
+  background-color: #FF0100;
+  margin: 13px 0px;
+  opacity: 1;
+}

@@ -13,12 +13,48 @@
                       required: true,
                       autofocus: true,
                       input_html: { autocomplete: "address" }%>
-          <%= f.input :available_weekdays, collection: Location::WEEKDAYS,
+         <!--   <%= f.input :available_weekdays, collection: Location::WEEKDAYS,
+                                           as: :check_boxes,
                                            include_blank: false,
                                            include_hidden: false,
                                            input_html: {
-                                            multiple: true
-                                          } %>
+                                            multiple: true,
+                                            style: "display: flex"
+                                          }
+                                              %> -->
+          <fieldset class="form-group">
+            <legend class="col-form-label pt-0">Wich days is your space availeble? <abbr title="required">*</abbr></legend>
+<div class="d-flex days-custom">
+              <div class="form-check">
+                <input class="hidden" style="display: flex" type="checkbox" value="Monday" name="location[available_weekdays][]" id="location_available_weekdays_monday">
+                <label class="collection_check_boxes day-custom" for="location_available_weekdays_monday">Monday</label>
+              </div>
+              <div class="form-check">
+                <input class="hidden" style="display: flex" type="checkbox" value="Tuesday" name="location[available_weekdays][]" id="location_available_weekdays_tuesday">
+                <label class="collection_check_boxes day-custom" for="location_available_weekdays_tuesday">Tuesday</label>
+              </div>
+              <div class="form-check">
+                <input class="hidden" style="display: flex" type="checkbox" value="Wednesday" name="location[available_weekdays][]" id="location_available_weekdays_wednesday">
+                <label class="collection_check_boxes day-custom" for="location_available_weekdays_wednesday">Wednesday</label>
+              </div>
+              <div class="form-check">
+                <input class="hidden" style="display: flex" type="checkbox" value="Thursday" name="location[available_weekdays][]" id="location_available_weekdays_thursday">
+                <label class="collection_check_boxes day-custom" for="location_available_weekdays_thursday">Thursday</label>
+              </div>
+              <div class="form-check">
+                <input class="hidden" style="display: flex" type="checkbox" value="Friday" name="location[available_weekdays][]" id="location_available_weekdays_friday">
+                <label class="collection_check_boxes day-custom" for="location_available_weekdays_friday">Friday</label>
+              </div>
+              <div class="form-check">
+                <input class="hidden" style="display: flex" type="checkbox" value="Saturday" name="location[available_weekdays][]" id="location_available_weekdays_saturday">
+                <label class="collection_check_boxes day-custom" for="location_available_weekdays_saturday">Saturday</label>
+              </div>
+              <div class="form-check">
+                <input class="hidden" style="display: flex" type="checkbox" value="Sunday" name="location[available_weekdays][]" id="location_available_weekdays_sunday">
+                <label class="collection_check_boxes day-custom" for="location_available_weekdays_sunday">Sunday</label>
+              </div>
+</div>
+            </fieldset>
 
           <%= f.input :description,
                       required: true,
