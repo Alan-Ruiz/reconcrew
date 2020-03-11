@@ -11,7 +11,6 @@ import '../components/price-calculation.js';
 
 import '../components/notifications.js';
 
-import '../components/extras-form.js'
 
 import '../components/checkboxes.js'
 
@@ -25,4 +24,5 @@ import {carouselPopUp} from '../plugins/carousel_popup.js'
 initMapbox();
 carouselPopUp();
 
+import '../components/extras-form.js'
 
