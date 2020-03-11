@@ -1,0 +1,5 @@
+meta_product_name: "Recon24"
+meta_title: "Recon24 - Filming has never been this easy"
+meta_description: "Recon24 is a website where productions can find location to film, and people can rent their space."
+meta_image: "cover.png" # should exist in `app/assets/images/`
+twitter_account: "@product_twitter_account"   # required for Twitter Cards
