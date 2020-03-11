@@ -30,10 +30,10 @@
               <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
                 <div id="notifications">
                     <% current_user.notifications.unread.each do |notification| %>
-                  <% if current_user.notification == nil %>
-                    <%= There are no notifications %>
-                  <% else %>
+                  <% if current_user.notifications != nil %>
                       <%= render partial: "notifications/#{notification.notifiable_type.underscore.pluralize}/#{notification.action}", locals: {notification: notification} %>
+                  <% else %>
+                    <p><%= There are no notifications %> </p>
                     <% end %>
                   <% end %>
                 <li>
