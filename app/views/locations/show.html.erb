@@ -54,7 +54,9 @@
 
           <!-- Message link -->
           <div class="msg-lnk d-flex">
-            <span class="msg-link"><%= link_to "Message #{@location.user.username}", chats_path(sender_id: current_user, recipient_id: @location.user), method: :post %><i class="far fa-comment-dots"></i></span>
+            <% if current_user != @location.user %>
+              <span class="msg-link"><%= link_to "Message #{@location.user.username}", chats_path(sender_id: current_user, recipient_id: @location.user), method: :post %><i class="far fa-comment-dots"></i></span>
+            <% end %>
           </div>
         </div>
 
