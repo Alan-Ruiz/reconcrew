@@ -8,18 +8,17 @@
         <%= cl_image_tag @user.photo.key, class: "avatar-xlarge"%>
         <h3 class="border-bottom py-3 mb-3 text-center"><%= @user.username %></h3>
         <p class="text-left"><i class="far fa-check-circle"></i> Email address verified</p>
-        <p class="text-left"><i class="far fa-check-circle"></i> Phone number </p>
-        <p class="text-left"><i class="far fa-check-circle"></i> Reviews</p>
+        <p class="text-left"><i class="far fa-check-circle"></i> Phone number verified</p>
       </div>
     </div> <!-- END OF FIRST COL -->
 
     <div class="col-lg-9">
       <button class="reel-accordion">Listed locations</button>
-      <div class="reel-panel active-panel">
+      <div class="reel-panel">
         <div class="row">
           <% if @locations.empty? %>
             <p>You did not list any locations yet.</p>
-            <%= link_to "List a location", new_location_path, class: "nav-link" %>
+            <%= link_to "List a location", new_location_path, class: "btn btn-dark ml-3" %>
           <% else %>
             <% @locations.each do |location| %>
                 <div class="col-lg-4">

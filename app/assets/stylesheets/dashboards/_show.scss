@@ -18,3 +18,10 @@
   color: white;
   border: 1px solid white;
 }
+.reel-accordion:focus{
+  background-color: black;
+  color: white;
+}
+.reel-panel{
+  display: block;
+}

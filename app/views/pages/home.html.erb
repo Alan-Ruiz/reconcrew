@@ -17,7 +17,7 @@
 <div class="black">
   <div class="reel-cont">
       <div class="home-categories py-5">
-        <h2 class="my-5">Search by category</h2>
+        <h3 class="my-5">Search by category</h3>
 
         <div class="row">
           <% @categories.each do |cat| %>
@@ -25,31 +25,31 @@
                 <%=link_to locations_path(utf8: "✓", :query => cat.name, button: ""), class: "card-trip my-3" do %>
                 <% case cat.name %>
                 <% when "kitchen" %>
-                  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1556912173-3bb406ef7e77?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80)">
+                  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url(https://images.unsplash.com/photo-1556912173-3bb406ef7e77?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80)">
                     <%= cat.name.capitalize %>
                   </div>
                 <% when "pub" %>
-                  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1485686531765-ba63b07845a7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1047&q=80)">
+                  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url(https://images.unsplash.com/photo-1485686531765-ba63b07845a7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1047&q=80)">
                     <%= cat.name.capitalize %>
                   </div>
                 <% when "apartment" %>
-                  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80)">
+                  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url(https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80)">
                     <%= cat.name.capitalize %>
                   </div>
                 <% when "garden" %>
-                  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1558521558-037f1cb027c5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1234&q=80)">
+                  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url(https://images.unsplash.com/photo-1558521558-037f1cb027c5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1234&q=80)">
                     <%= cat.name.capitalize %>
                   </div>
                 <% when "living_room" %>
-                  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1541123603104-512919d6a96c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80)">
-                    <%= cat.name.capitalize %>
+                  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url(https://images.unsplash.com/photo-1541123603104-512919d6a96c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80)">
+                    <span>Living room</span>
                   </div>
                 <% when "basement" %>
-                  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1558101186-a6f75b6dacd4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=375&q=80)">
+                  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url(https://images.unsplash.com/photo-1558101186-a6f75b6dacd4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=375&q=80)">
                     <%= cat.name.capitalize %>
                   </div>
                 <% when "toilet" %>
-                  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1569597967185-cd6120712154?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=667&q=80)">
+                  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url(https://images.unsplash.com/photo-1569597967185-cd6120712154?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=667&q=80)">
                     <%= cat.name.capitalize %>
                   </div>
                 <% when "restaurant" %>

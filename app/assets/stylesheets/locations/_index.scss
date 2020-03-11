@@ -35,13 +35,11 @@
 }
 
 .card-trip p {
-  font-size: 14px;
+  font-size: 16px;
   margin: 0;
-  padding: 0 15px;
 }
 
 .card-trip .card-trip-infos {
-  padding: 16px;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -54,8 +52,8 @@
     background: red;
     color: white;
     font-size: 14px;
-    width: 60px;
-    height: 60px;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
     text-align: center;
     vertical-align: middle;
