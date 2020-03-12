@@ -23,8 +23,8 @@
                                           }
                                               %> -->
           <fieldset class="form-group">
-            <legend class="col-form-label pt-0">Wich days is your space availeble? <abbr title="required">*</abbr></legend>
-<div class="d-flex days-custom">
+            <legend class="space-availability col-form-label pt-0">When is your space available?<abbr title="required">*</abbr></legend>
+              <div class="d-flex days-custom">
               <div class="form-check">
                 <input class="hidden" style="display: flex" type="checkbox" value="Monday" name="location[available_weekdays][]" id="location_available_weekdays_monday">
                 <label class="collection_check_boxes day-custom" for="location_available_weekdays_monday">Monday</label>
@@ -65,8 +65,9 @@
                       required: true,
                       autofocus: true,
                       input_html: { autocomplete: "price" }%>
-          <%= f.input :space %>
-          <%= f.input :capacity %>  <p>m2</p>
+          <%= f.input :space, placeholder: "Size of location in square meters" %>
+          <%= f.input :capacity, placeholder: "Number of people that fit in your location"  %>
+          <%= f.input :plugs, label: "Number of plugs:" %>
           <%= f.input :photos, as: :file, input_html: { multiple: true } %>
         <div class="form-actions">
           <%= f.button :submit, "List", class: "btn btn-danger btn-block" %>
