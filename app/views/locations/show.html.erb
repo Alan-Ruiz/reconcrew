@@ -100,7 +100,7 @@
       <!-- End of Location Information -->
 
       <!--Reviews -->
-      <div class="revs">
+      <div class="revs border-bottom">
         <p class="reviews-title-count mt-5"><span class="reviews-title">Reviews</span><span class="reviews-count" >(<%= @reviews.count %>)</span></p>
         <div class="review-info">
           <% if @location.bookings.nil? %>
@@ -124,8 +124,46 @@
       </div>
       <!-- END OF REWIWIES -->
 
+        <div class="ownr-info" style="margin-top: -5px">
+          <div style="display: flex; align-items: center; justify-content: space-between;">
+            <p class="ownr-name mt-5" style="margin-bottom:2px; font-weight:bold; font-size: 20px;">Owner: <%= @location.user.username %></p>
+            <div class="avatar-pic">
+                <% if @location.user.photo.attached? %>
+                <%= cl_image_tag @location.user.photo.key, class: "avatar-owner dropdown-toggle", id: "navbar-wagon-menu" %>
+                <% else %>
+                <%= image_tag "https://upload.wikimedia.org/wikipedia/commons/e/eb/Blank.jpg", class: "avatar dropdown-toggle", id: "navbar-wagon-menu"%>
+                <% end %>
+            </div>
+          </div>
+          <i class="fas fa-star d-flex" style="font-size: 14px;">
+            <p style="margin-left: 5px; display: flex; font-size: 14px; font-weight: 400; font-family: -apple-system, BlinkMacSystemFont;"> <%=@reviews.count%> reviews</p>
+          </i>
+        </div>
+
+        <div class="guest-queries" style="margin-top:20px; width: 100%;">
+          <p style="font-size: 14px; margin-bottom: 0px;"><strong>Guest Queries:</strong></p>
+          <p style="font-size: 14px; text-align: justify;">The host can provide various suggestions and answer any questions you might have through our chat</p>
+        </div>
+        <div class="desc-msg border-bottom">
+          <!-- Message link -->
+          <div class="msg-lnk d-flex">
+            <% if current_user != @location.user %>
+              <span class="msg-link"><%= link_to "Message #{@location.user.username}", chats_path(sender_id: current_user, recipient_id: @location.user), method: :post %><i class="far fa-comment-dots"></i></span>
+            <% end %>
+          </div>
+        </div>
+        <div class="scam-prevention border-bottom" style="width: 100%;">
+          <!-- <p style="font-size: 14px; margin-bottom: 0px; margin-top: 30px;"></p> -->
+          <p style="font-size: 14px; margin-bottom: 5px; margin-top: 30px; text-align: justify;">
+            <strong>Always communicate through Recon24.</strong>For your payments to be protected, never transfer money or communicate from outside the Recon24 page.
+            If an Airbnb host asks you to make a payment off the platform or through another company, report it.</p>
+          <p style="font-size: 14px;">
+            Never share your email address with another user until the reservation is confirmed or make any payment outside of the Airbnb system. Also, be sure to carefully examine any messages you receive whose sender identifies as an Airbnb employee.</p>
+        </div>
+
+
       <div class="location">
-        <div id="map" style="width: 100%; height: 500px;" data-markers="<%= @markers.to_json %>" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+        <div id="map" style="width: 100%; height: 300px;" data-markers="<%= @markers.to_json %>" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
       </div> <!-- END OF LOCATIONS -->
     </div> <!-- END OF COLUMN -->
     <!-- END OFLEFT SIDE DETAILS -->
