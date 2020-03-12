@@ -28,17 +28,17 @@
 
       <!-- Location Information -->
       <div class="loc-info">
-        <div class="capacity-space-container" style="display:flex; justify-content: space-between; width: 100%; margin: 0 auto; margin-bottom: 30px;">
+        <div class="capacity-space-container" style="display:flex; justify-content: space-around; width: 100%; margin: 0 auto; margin-bottom: 30px;">
           <div class="capacity" style="display: inline-flex; text-align: center;" >
-            <p style="margin-bottom: 0px; font-size: 14px; font-weight: 700; color: grey;">Capacity:</p>
+            <p style="margin-right: 5px; margin-bottom: 0px; font-size: 14px; font-weight: 700; color: grey;">Capacity:</p>
             <p class="capacity-num" style="font-size: 14px; color: grey;" ><%= @location.capacity %> people</p>
           </div>
           <div class="space" style="display: inline-flex; text-align: center;">
-            <p style="margin-bottom: 0px; font-size: 14px; font-weight: 700; color: grey;">Space:</p>
+            <p style="margin-right: 5px; margin-bottom: 0px; font-size: 14px; font-weight: 700; color: grey;">Space:</p>
             <p class="space-num" style="font-size: 14px; color: grey;"><%= @location.space %> square meters</p>
           </div>
           <div class="plugs" style="display: inline-flex; text-align: center;">
-            <p style="margin-bottom: 0px; font-size: 14px; font-weight: 700; color: grey;">Number of plugs:</p>
+            <p style="margin-right: 5px; margin-bottom: 0px; font-size: 14px; font-weight: 700; color: grey;">Number of plugs:</p>
             <p class="space-num" style="font-size: 14px; color: grey;"><%= @location.plugs %></p>
           </div>
         </div>
@@ -157,13 +157,48 @@
             <p>fghjk</p>
           </div>
 
+        <!-- Scam Prevention -->
         <div class="scam-prevention border-bottom" style="width: 100%;">
           <!-- <p style="font-size: 14px; margin-bottom: 0px; margin-top: 30px;"></p> -->
           <p style="font-size: 14px; margin-bottom: 5px; margin-top: 30px; text-align: justify;">
-            <strong>Always communicate through Recon24.</strong>For your payments to be protected, never transfer money or communicate from outside the Recon24 page.
-            If an Airbnb host asks you to make a payment off the platform or through another company, report it.</p>
+            <strong>Always communicate through RECON24.</strong>For your payments to be protected, never transfer money or communicate from outside the RECON24 page.
+            If an RECON24 host asks you to make a payment off the platform or through another company, report it.</p>
           <p style="font-size: 14px;">
-            Never share your email address with another user until the reservation is confirmed or make any payment outside of the Airbnb system. Also, be sure to carefully examine any messages you receive whose sender identifies as an Airbnb employee.</p>
+            Never share your email address with another user until the reservation is confirmed or make any payment outside of the RECON24 system. Also, be sure to carefully examine any messages you receive whose sender identifies as an RECON24 employee.</p>
+          <button id="scam-prevention" type="button" style="margin-top:20px;font-weight: 400; padding: 0; letter-spacing: 0px; color: red; font-size:12px;"> More information on scam prevention</button>
+            <script>
+              const infoSelect = document.getElementById("scam-prevention")
+              infoSelect.addEventListener("click", (display) => {
+                infoSelect.classList.add('d-none')
+                const moreInfo = document.getElementById("more-info-scam")
+                moreInfo.classList.add('d-block')
+              });
+            </script>
+
+            <div id="more-info-scam" style="margin-top: 20px;" >
+              <p style="font-size: 14px; text-align: justify" ><strong>More information:</strong></p>
+              <p style="font-size: 14px; text-align: justify" >Here are some examples of the scams you could suffer:</p>
+              <div class="spam-list d-block" style="position:relative; width: 80%; margin: 0 auto;">
+                <p style="font-size: 14px; text-align: justify">-<strong> Prepayment scam:</strong> The scammer offers you a financial bonus or other reward for using non-RECON24 payment services.</p>
+                <p style="font-size: 14px; text-align: justify">-<strong> Phishing scam:</strong> The scammer sends an email or link that appears at first glance to be from RECON24 or another trusted site. These messages are intended to trick the victim by asking for confidential information, such as passwords or other email addresses, and may contain malware, malicious software that access the computer to gain confidential information and passwords.</p>
+                <p style="font-size: 14px; text-align: justify">-<strong> Travel scam:</strong> The scammer asks the victim to make a bank transfer or make an advance payment to guarantee a good deal. The scammer keeps the money without providing the promised accommodation.</p>
+                <p style="font-size: 14px; text-align: justify">-<strong> Overpayment scam:</strong> The scammer offers the victim a higher payment than the cost of the accommodation and then requests a cash refund.</p>
+                <p style="font-size: 14px; text-align: justify">-<strong> Third-party booking scam:</strong> The scammer offers to book and pay for accommodation on RECON24 through an external website or service, often with the excuse of having an RECON24 coupon or discount. These reservations are usually paid with stolen credit cards.</p>
+              </div>
+
+              <p style="font-style: italic; font-size: 14px; text-align: justify">Note: Any reservation made outside of RECON24 violates our Terms of Service. If we detect that a reservation has been made through an external service, we can cancel it and deactivate the accounts of both the person who made the reservation and the guest.</p>
+              <!-- Less info button -->
+              <button id="less-info" type="button" style="font-weight: 400; padding: 0; letter-spacing: 0px; color: red; font-size:12px;"> Less Info</button>
+              <script>
+                const lessSelect = document.getElementById("less-info")
+
+                  lessSelect.addEventListener("click", (erase) => {
+                  infoSelect.classList.remove("d-none")
+                  const moreInfo = document.getElementById("more-info-scam")
+                  moreInfo.classList.remove('d-block')
+              });
+              </script>
+            </div>
         </div>
 
 
