@@ -18,4 +18,8 @@ class Chat < ApplicationRecord
       includes(:messages).order('messages.created_at DESC')
     }
 
+
+  def other_user(user)
+    user.sender?(self) ? recipient : sender
+  end
 end
