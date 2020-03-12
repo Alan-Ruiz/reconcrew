@@ -28,16 +28,20 @@
 
       <!-- Location Information -->
       <div class="loc-info">
-        <div class="capacity-space-container" style="display:flex; justify-content: space-between; width: 50%; margin: 0 auto; margin-bottom: 30px;">
-          <div class="capacity d-block" style="text-align: center;" >
+        <div class="capacity-space-container" style="display:flex; justify-content: space-between; width: 100%; margin: 0 auto; margin-bottom: 30px;">
+          <div class="capacity" style="display: inline-flex; text-align: center;" >
             <p style="margin-bottom: 0px; font-size: 14px; font-weight: 700; color: grey;">Capacity:</p>
-              <p class="capacity-num" style="font-size: 14px; color: grey;" ><%= @location.capacity %> people</p>
-            </div>
-            <div class="space d-block" style="text-align: center;">
-              <p style="margin-bottom: 0px; font-size: 14px; font-weight: 700; color: grey;">Space:</p>
-              <p class="space-num" style="font-size: 14px; color: grey;"><%= @location.space %> square meters</p>
-            </div>
+            <p class="capacity-num" style="font-size: 14px; color: grey;" ><%= @location.capacity %> people</p>
           </div>
+          <div class="space" style="display: inline-flex; text-align: center;">
+            <p style="margin-bottom: 0px; font-size: 14px; font-weight: 700; color: grey;">Space:</p>
+            <p class="space-num" style="font-size: 14px; color: grey;"><%= @location.space %> square meters</p>
+          </div>
+          <div class="plugs" style="display: inline-flex; text-align: center;">
+            <p style="margin-bottom: 0px; font-size: 14px; font-weight: 700; color: grey;">Number of plugs:</p>
+            <p class="space-num" style="font-size: 14px; color: grey;"><%= @location.plugs %></p>
+          </div>
+        </div>
           <!-- Avatar & Name -->
           <div class="avatar-name d-flex">
            <% if @location.user.photo.attached? %>
