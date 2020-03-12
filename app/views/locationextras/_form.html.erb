@@ -1,4 +1,12 @@
 <%= simple_form_for [@location, @locationextras] do |f| %>
   <%= f.association :extra %>
-  <%= f.submit "add a extra", class: "btn btn-danger" %>
+
+ <script>
+var form = document.querySelect("form-group");
+function handleForm(event) { event.preventDefault(); }
+form.addEventListener('submit', handleForm);
+</script>
+
+  <%= f.submit "add a extra", class: "btn btn-danger submit-bttn" %>
 <% end %>
+
