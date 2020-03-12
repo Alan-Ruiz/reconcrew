@@ -109,6 +109,7 @@ kitchen3 = URI.open('https://static.domain.com.au/domainblog/uploads/2018/09/171
 kitchen_3 = Location.create!(available_weekdays: random_weekdays, name: "Big kitchen", price: 75, description: "Brand new, haven't used it yet.", category: kitchen, user: User.last, address: "Plaza palmeras 6")
 kitchen_3.photos.attach(io: kitchen3, filename: 'nes.jpg', content_type: 'image/jpg')
 
+
 kitchen4 = URI.open('https://st.hzcdn.com/simgs/6b31588a0c119748_4-6721/home-design.jpg')
 kitchen_4 = Location.create!(available_weekdays: random_weekdays, name: "Minion kitchen", price: 35, description: "Brand new, haven't used it yet.", category: kitchen, user: User.last, address: "Plaza palmeras 6")
 kitchen_4.photos.attach(io: kitchen4, filename: 'nes.jpg', content_type: 'image/jpg')

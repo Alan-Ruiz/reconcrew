@@ -3,54 +3,79 @@
 <div id="grid-banner" class="grid slide">
   <div class="grid-inner">
     <% @location.photos.take(5).each_with_index do |pic, i| %>
-      <div class="<%= i == 1 ? "first-pic" : "small-pic" %> grid-item carousel-trigger" style="background-image: url(<%= url_for(pic) %>)" ></div>
+    <div class="<%= i == 1 ? "first-pic" : "small-pic" %> grid-item carousel-trigger" style="background-image: url(<%= url_for(pic) %>)" >
+
+    </div>
     <% end %>
   </div>
 </div>
 
- <!--    <div class="carousel-item active">
-      <img src="http://cdn.home-designing.com/wp-content/uploads/2018/11/luxury-curtains-for-living-room.jpg" alt="Living-Room" style="width:100%">
-    </div>
-    <div class="carousel-item">
-     <img class="living-room" src="https://pbs.twimg.com/media/DIkDoYpVAAQqg1W.jpg" alt="garden" style="width:100%">
-    </div>
-    <div class="carousel-item">
-        <img src="https://www.thecelebrationsociety.com/wp-content/uploads/2016/09/white-mansion-with-french-doors-and-coloums-AIS-Portraits-2-of-68.jpg" alt="Facade" style="width:100%">
-    </div> -->
-<!-- END OF CAROUSEL -->
-
-<!-- RIGHT SIDE DETAILS -->
-
-<!-- END OF RIGHT SIDE -->
 <div class="show-container">
   <div class="loc-dets-cont row "> <!-- Deleted py-4 from class -->
     <!-- LEFT SIDE DETAILS -->
     <div class="location-details col-lg-8 col-sm-12">
-
       <div class="loc-title d-flex justify-content-between border-bottom align-items-center">
-        <h3><%= @location.name%></h3>
-        <% if current_user == @location.user %>
-        <%= link_to 'Edit', edit_location_path(@location), class: 'edit_link' %><br><br>
-        <% end %>
-      </div> <!-- END OF LOCATION NAME -->
-
-      <div class="loc-info">
-        <div class="avatar-name d-flex">
-           <% if @location.user.photo.attached? %>
-            <%= cl_image_tag @location.user.photo.key, class: "avatar dropdown-toggle", id: "navbar-wagon-menu" %>
-          <% else %>
-            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbar-wagon-menu"%>
-          <% end %>
-          <%= link_to @location.user.username, profile_path(@location.user), class: "owner-name" %>
+        <div class="location-title">
+          <h1><%= @location.name%></h1>
         </div>
+        <div class="edit-link" style="position: relative; top: 0px; right: 5px;">
+          <% if current_user == @location.user %>
+          <%= link_to 'Edit details', edit_location_path(@location), class: 'edit_link' %></span><br><br>
+          <% end %>
+        </div>
+      </div>
+      <!-- END OF LOCATION NAME -->
 
+      <!-- Location Information -->
+      <div class="loc-info">
+        <div class="capacity-space-container" style="display:flex; justify-content: space-between; width: 50%; margin: 0 auto; margin-bottom: 30px;">
+          <div class="capacity d-block" style="text-align: center;" >
+            <p style="margin-bottom: 0px; font-size: 14px; font-weight: 700; color: grey;">Capacity:</p>
+              <p class="capacity-num" style="font-size: 14px; color: grey;" ><%= @location.capacity %> people</p>
+            </div>
+            <div class="space d-block" style="text-align: center;">
+              <p style="margin-bottom: 0px; font-size: 14px; font-weight: 700; color: grey;">Space:</p>
+              <p class="space-num" style="font-size: 14px; color: grey;"><%= @location.space %> square meters</p>
+            </div>
+          </div>
+          <!-- Avatar & Name -->
+          <div class="avatar-name d-flex">
+           <% if @location.user.photo.attached? %>
+           <%= cl_image_tag @location.user.photo.key, class: "avatar dropdown-toggle", id: "navbar-wagon-menu" %>
+           <% else %>
+           <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbar-wagon-menu"%>
+           <% end %>
+           <%= link_to @location.user.username, profile_path(@location.user), class: "owner-name" %>
+         </div>
 
-          <div class="desc-msg border-bottom">
+         <!-- Location description & messages -->
+         <div class="desc-msg border-bottom">
           <p class="loc-desc" ><%= @location.description %></p><!-- Deleted py-3 from class -->
 
+          <!-- Message link -->
+          <div class="msg-lnk d-flex">
+            <% if current_user != @location.user %>
+              <span class="msg-link"><%= link_to "Message #{@location.user.username}", chats_path(sender_id: current_user, recipient_id: @location.user), method: :post %><i class="far fa-comment-dots"></i></span>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="extras-container">
+          <!-- Extras with icons -->
+          <div class="extra-items" style="display:flex; justify-content: space-around;" >
+            <% @location.locationextras.each do |locationextra| %>
+            <div class="d-block">
+              <p style="text-align: center;"><%= locationextra.extra.icon.html_safe%></p>
+              <p style="text-align: center;"><%= locationextra.extra.name%></p>
+            </div>
+            <% end %>
+          </div>
+
+
           <!-- Add location characteristics button -->
-          <% if current_user == @location.user %>
-            <button type="button" id="extras-button">Add location characteristics</button>
+          <div class="add-chars d-flex border-bottom">
+            <% if current_user == @location.user %>
+            <button type="button" id="extras-button" style="font-weight: 400; padding: 0; letter-spacing: 0px; color: black;">Add more location characteristics</button>
             <script>
               const extrasSelect = document.getElementById("extras-button")
               extrasSelect.addEventListener("click", (displayForm) => {
@@ -59,117 +84,134 @@
                 extrasForm.classList.add('d-block')
               });
             </script>
-          <% end %>
+            <% end %>
+          </div>
 
           <!-- Extras Form -->
           <div class="extras">
             <% if current_user == @location.user %>
-              <div id="extras-form">
-                <%= render './locationextras/form'%>
-              </div>
-            <% end %>
-          </div>
-
-          <!-- Extras with icons -->
-          <div class="extra-items">
-            <% @location.locationextras.each do |locationextra| %>
-            <div class="d-flex">
-              <p><%= locationextra.extra.name%></p>
-              <p><%= locationextra.extra.icon.html_safe%></p>
+            <div id="extras-form">
+              <%= render './locationextras/form'%>
             </div>
             <% end %>
           </div>
-
-          <!-- Message link -->
-          <div class="msg-lnk d-flex">
-            <span class="msg-link"><%= link_to "Message #{@location.user.username}", chats_path(sender_id: current_user, recipient_id: @location.user), method: :post %><i class="far fa-comment-dots"></i></span>
-          </div>
         </div>
-
-
       </div>
-      <div>
-      <p class="reviews-title-count mt-5"><span class="reviews-title">Reviews</span><span class="reviews-count" >(<%= @reviews.count %>)</span></p>
+      <!-- End of Location Information -->
+
+      <!--Reviews -->
+      <div class="revs border-bottom">
+        <p class="reviews-title-count mt-5"><span class="reviews-title">Reviews</span><span class="reviews-count" >(<%= @reviews.count %>)</span></p>
         <div class="review-info">
           <% if @location.bookings.nil? %>
-            <p>You don't have any reviews yet</p>
+          <p>You don't have any reviews yet</p>
           <% else %>
-            <% @reviews.each do |review| %>
-              <% if review.user != @location.user %>
-                <div class="border-bottom my-2">
-                  <div class="user-info d-flex justify-content-between">
-                    <p><%= review.user.username %><i class="fas fa-star"><%=review.rating%></i></p>
-                    <p><% d = review.created_at %> <span class="date"><%= d.strftime('%a %d %b %Y') %></span></p>
-                  </div>
-                  <div class="d-flex justify-content-between">
-                    <p><%= review.content %></p>
-                  </div>
-                </div>
-              <% end %>
-            <% end %>
+          <% @reviews.each do |review| %>
+          <% if review.user != @location.user %>
+          <div class="border-bottom my-2">
+            <div class="user-info d-flex justify-content-between">
+              <p><%= review.user.username %><i class="fas fa-star"><%=review.rating%></i></p>
+              <p><% d = review.created_at %> <span class="date"><%= d.strftime('%a %d %b %Y') %></span></p>
+            </div>
+            <div class="d-flex justify-content-between">
+              <p><%= review.content %></p>
+            </div>
+          </div>
+          <% end %>
+          <% end %>
           <% end %>
         </div>
-      </div> <!-- END OF REWIWIES -->
+      </div>
+      <!-- END OF REWIWIES -->
+
+        <div class="ownr-info" style="margin-top: -5px">
+          <div style="display: flex; align-items: center; justify-content: space-between;">
+            <p class="ownr-name mt-5" style="margin-bottom:2px; font-weight:bold; font-size: 20px;">Owner: <%= @location.user.username %></p>
+            <div class="avatar-pic">
+                <% if @location.user.photo.attached? %>
+                <%= cl_image_tag @location.user.photo.key, class: "avatar-owner dropdown-toggle", id: "navbar-wagon-menu" %>
+                <% else %>
+                <%= image_tag "https://upload.wikimedia.org/wikipedia/commons/e/eb/Blank.jpg", class: "avatar dropdown-toggle", id: "navbar-wagon-menu"%>
+                <% end %>
+            </div>
+          </div>
+          <i class="fas fa-star d-flex" style="font-size: 14px;">
+            <p style="margin-left: 5px; display: flex; font-size: 14px; font-weight: 400; font-family: -apple-system, BlinkMacSystemFont;"> <%=@reviews.count%> reviews</p>
+          </i>
+        </div>
+
+        <div class="guest-queries" style="margin-top:20px; width: 100%;">
+          <p style="font-size: 14px; margin-bottom: 0px;"><strong>Guest Queries:</strong></p>
+          <p style="font-size: 14px; text-align: justify;">The host can provide various suggestions and answer any questions you might have through our chat</p>
+        </div>
+        <div class="desc-msg border-bottom">
+          <!-- Message link -->
+          <div class="msg-lnk d-flex">
+            <% if current_user != @location.user %>
+              <span class="msg-link"><%= link_to "Message #{@location.user.username}", chats_path(sender_id: current_user, recipient_id: @location.user), method: :post %><i class="far fa-comment-dots"></i></span>
+            <% end %>
+          </div>
+        </div>
+        <div class="scam-prevention border-bottom" style="width: 100%;">
+          <!-- <p style="font-size: 14px; margin-bottom: 0px; margin-top: 30px;"></p> -->
+          <p style="font-size: 14px; margin-bottom: 5px; margin-top: 30px; text-align: justify;">
+            <strong>Always communicate through Recon24.</strong>For your payments to be protected, never transfer money or communicate from outside the Recon24 page.
+            If an Airbnb host asks you to make a payment off the platform or through another company, report it.</p>
+          <p style="font-size: 14px;">
+            Never share your email address with another user until the reservation is confirmed or make any payment outside of the Airbnb system. Also, be sure to carefully examine any messages you receive whose sender identifies as an Airbnb employee.</p>
+        </div>
+
 
       <div class="location">
-        <div id="map" style="width: 100%; height: 500px;" data-markers="<%= @markers.to_json %>" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-        </div>
+        <div id="map" style="width: 100%; height: 300px;" data-markers="<%= @markers.to_json %>" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
       </div> <!-- END OF LOCATIONS -->
     </div> <!-- END OF COLUMN -->
     <!-- END OFLEFT SIDE DETAILS -->
 
-        <div class="col-lg-4 col-sm-12">
-          <div class="booking-dets border rounded p-4">
-            <div class="price-top border-bottom"><strong><%= (@location.price) %>€</strong>/day</div>
-            <div class="dates">
-              <%= render './bookings/form' %>
-            </div>
-          </div>
+    <div class="col-lg-4 col-sm-12">
+      <div class="booking-dets border rounded p-4">
+        <p>Add dates to see final price</p>
+        <div class="price-top border-bottom"><span class="loct-price"><%= (@location.price) %>€</span> /day</div>
+        <div class="dates">
+          <%= render './bookings/form' %>
         </div>
-    </div> <!-- END OF ROW -->
-
-</div>
-<!-- END OF CONTAINER -->
-
-<div class="carousel carousel-popup">
-  <!-- CAROUSEL -->
-  <i class="far fa-times-circle popup-close"></i>
-  <div class="container">
-    <div id="carousel-banner" class="carousel slide" data-ride="carousel">
-      <div class="carousel-inner">
-         <%= @location.photos.each do |photo| %>
-         <% if photo == @location.photos[0] %>
-          <div class="carousel-item active">
-           <%= cl_image_tag photo.key, class:'d-block w-100' %>
-          </div>
-          <% else %>
-            <div class="carousel-item">
-             <%= cl_image_tag photo.key, class:'d-block w-100' %>
-            </div>
-         <% end %>
-          <% end %>
-     <!--    <div class="carousel-item active">
-          <img src="http://cdn.home-designing.com/wp-content/uploads/2018/11/luxury-curtains-for-living-room.jpg" alt="Living-Room" style="width:100%">
-        </div>
-        <div class="carousel-item">
-         <img class="living-room" src="https://pbs.twimg.com/media/DIkDoYpVAAQqg1W.jpg" alt="garden" style="width:100%">
-        </div>
-        <div class="carousel-item">
-            <img src="https://www.thecelebrationsociety.com/wp-content/uploads/2016/09/white-mansion-with-french-doors-and-coloums-AIS-Portraits-2-of-68.jpg" alt="Facade" style="width:100%">
-        </div> -->
       </div>
-      <a class="carousel-control-prev" href="#carousel-banner" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="carousel-control-next" href="#carousel-banner" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
     </div>
+    <!-- END OF ROW -->
 
+
+    <!-- END OF CONTAINER -->
+
+    <!-- CAROUSEL -->
+    <div class="carousel carousel-popup">
+      <i class="far fa-times-circle popup-close"></i>
+      <div class="container">
+        <div id="carousel-banner" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner">
+           <%= @location.photos.each do |photo| %>
+           <% if photo == @location.photos[0] %>
+           <div class="carousel-item active">
+             <%= cl_image_tag photo.key, class:'d-block w-100' %>
+           </div>
+           <% else %>
+           <div class="carousel-item">
+             <%= cl_image_tag photo.key, class:'d-block w-100' %>
+           </div>
+           <% end %>
+           <% end %>
+         </div>
+         <a class="carousel-control-prev" href="#carousel-banner" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carousel-banner" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </div>
   </div>
-<!-- END OF CAROUSEL -->
 </div>
+<!-- END OF CAROUSEL -->
 
 

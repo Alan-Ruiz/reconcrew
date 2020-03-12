@@ -6,17 +6,22 @@
   margin: 20px 100px;
 }
 
+.edit-link a{
+font-size:14px;
+color: red;
+}
+
 .loc-dets-cont {
   padding-bottom: 0px;
   padding-top: 0px;
 }
 
 .location-details {
-  margin-top: 30px;
+  margin-top: 5px;
 }
 
 .loc-info {
-  margin-top: 30px;
+  margin-top: 10px;
 }
 
 .loc-desc {
@@ -40,6 +45,14 @@ color: red;
 .avatar-name {
   align-items: center;
   margin-bottom: 20px;
+}
+
+.avatar-owner{
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  position: relative;
+  top: 25px;
 }
 
 .fa-comment-dots{
@@ -86,7 +99,18 @@ color: red;
   position: sticky;
   top: 0;
   font-family: "Noto Sans", "Helvetica", "sans-serif";
-  font-size: 12px;
+
+  p {
+    font-weight: 700;
+    margin-bottom:0px;
+    font-size: 18px;
+  }
+}
+
+.loct-price {
+  font-size: 14px;
+  color: black;
+  font-weight: 400;
 }
 
 .form-control:disabled, .form-control[readonly] {
@@ -99,9 +123,8 @@ color: red;
 
 .price-top {
   font-family: "Noto Sans", "Helvetica", "sans-serif";
-  font-size: 16px;
+  font-size: 14px;
   margin-bottom: 25px;
-  margin-top: 15px;
 }
 
 .price-top, strong {
@@ -111,8 +134,17 @@ color: red;
 .payment-dets {
   margin-bottom: 20px;
   margin-top: 40px;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 400;
+  p {
+    font-size: 14px;
+  }
+}
+
+#tot-price-days {
+  font-weight: 100;
+  color: grey;
+  display: none;
 }
 
 .tp-container {
@@ -158,6 +190,11 @@ color: red;
   grid-column: span 2;
 }
 
+.fist-pic:hover {
+  background-size: 350px; /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+
+
 
 
 .grid-item{
@@ -165,6 +202,9 @@ color: red;
   background-repeat: no-repeat;
 }
 
+// .grid-item:hover {
+  // transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+// }
 
 .carousel-item img {
   height:500px;

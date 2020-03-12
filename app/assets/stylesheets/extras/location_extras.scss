@@ -1,14 +1,33 @@
+.add-chars {
+justify-content: flex-end;
+}
+
 #extras-button {
   background-color: white;
   box-shadow: none;
   border: none;
   color: red;
-  margin-left: -7px;
   font-size: 12px;
+  margin-top: 20px;
 }
 
 #extras-form {
   display: none;
 }
 
+.extras-container {
+  margin-top: 20px;
+}
 
+.extra-items {
+  margin-top: 30px;
+}
+
+.extra-name-icn {
+  margin-bottom: 5px;
+}
+
+.fa-sun {
+  margin-right: 5px;
+  text-align: center;
+}

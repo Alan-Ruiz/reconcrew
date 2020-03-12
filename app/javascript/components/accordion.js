@@ -1,5 +1,4 @@
 const acc = document.querySelectorAll(".reel-accordion");
-let i;
 
 acc.forEach(element => {
   element.addEventListener("click", function() {
