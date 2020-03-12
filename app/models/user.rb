@@ -14,4 +14,12 @@ class User < ApplicationRecord
   def last_active_chat
     Chat.involving(self).ordered_by_last_active.first
   end
+
+  def sender?(chat)
+    self == chat.sender
+  end
+
+  def recipient?(chat)
+    self == chat.recipient
+  end
 end

@@ -6,11 +6,11 @@
     <% end %>
   </div>
 
-  <div id="chat-box" style="height: calc(100vh - 130px);">
+  <div data-current-user-id="<%= current_user.id %>" id="chat-box" style="height: calc(100vh - 130px);">
     <div class="chat">
       <div class="messages">
         <div class="messages--content">
-          <%= render @messages %>
+          <%= render @messages, other_user_id: current_user.id %>
         </div>
       </div> <!-- END OF MESSAGES -->
       <div class="chat--form">
