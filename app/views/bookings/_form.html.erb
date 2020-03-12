@@ -13,20 +13,20 @@
                            label: "Dates",
                            placeholder: "From",
                            wrapper_html: { class: "inline_field_wrapper calendar", id:"date-selec" },
-                           input_html: {
+                           input_html: { class: "booking-input",
                             data: {
                               target: 'flatpickr.instance'
                             }
                            } %>
 
-                         <div class="payment-dets">
-              <div class="payment-title">
-              <p class="payment-dets border-bottom">Payment Details</p>
-              </div>
-              <div class id="tot-price-days">
-                <p><span id='location-price'><%= @location.price%></span> x <span class='total-price-days'>0</span> day(s)</p>
-                <p class="tp-container" ><span class="tp">TOTAL PRICE</span><span class="price-container" ><span id='total-price'>0</span>€</span></p>
-              </div>
+              <div class="payment-dets">
+                <div class="payment-title">
+                <p class="payment-dets border-bottom">Payment Details</p>
+                </div>
+                <div id="tot-price-days">
+                  <p><span id='location-price'><%= @location.price%></span> x <span class='total-price-days'>0</span> day(s)</p>
+                  <p class="tp-container" ><span class="tp">TOTAL PRICE</span><span class="price-container" ><span id='total-price'>0</span>€</span></p>
+                </div>
             </div>
 
   <%= f.submit "Book", class: "btn-booking btn btn-primary btn-lg btn-block btn-danger date-button disable",
