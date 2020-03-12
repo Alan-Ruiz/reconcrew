@@ -37,6 +37,29 @@ color: red;
 color: red;
 }
 
+.contact-owner a {
+    border: 2px solid red;
+    padding: 5px;
+    color: red;
+    border-radius: 5px;
+    font-size: 12px;
+    text-align: center;
+}
+
+.sss p{
+  position: relative;
+  left: 1000px;
+}
+
+.contact-owner a:hover {
+    border: 2px solid red;
+    padding: 5px;
+    color: white;
+    background-color:red;
+    opacity: 0.8;
+}
+
+
 .owner-name {
   margin-left: 10px;
   font-size: 16px;

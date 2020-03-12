@@ -3,7 +3,7 @@
 <div id="grid-banner" class="grid slide">
   <div class="grid-inner">
     <% @location.photos.take(5).each_with_index do |pic, i| %>
-    <div class="<%= i == 1 ? "first-pic" : "small-pic" %> grid-item carousel-trigger" style="background-image: url(<%= url_for(pic) %>)" >
+    <div class="<%= i == 1 ? "first-pic" : "small-pic" %> grid-item carousel-trigger" style="background-image: url(<%= url_for(pic) %>); background-position: center;" >
 
     </div>
     <% end %>
@@ -144,18 +144,19 @@
           </i>
         </div>
 
-        <div class="guest-queries" style="margin-top:20px; width: 100%;">
+        <div class="guest-queries" style="margin-top:20px; width: 100%; margin-bottom: 30px">
           <p style="font-size: 14px; margin-bottom: 0px;"><strong>Guest Queries:</strong></p>
           <p style="font-size: 14px; text-align: justify;">The host can provide various suggestions and answer any questions you might have through our chat</p>
         </div>
-        <div class="desc-msg border-bottom">
-          <!-- Message link -->
-          <div class="msg-lnk d-flex">
-            <% if current_user != @location.user %>
-              <span class="msg-link"><%= link_to "Message #{@location.user.username}", chats_path(sender_id: current_user, recipient_id: @location.user), method: :post %><i class="far fa-comment-dots"></i></span>
-            <% end %>
+
+          <!-- Contact Owner -->
+          <div class="contact-owner ">
+              <span class="msg-link"><%= link_to "Contact Owner", chats_path(sender_id: current_user, recipient_id: @location.user), method: :post %></span>
           </div>
-        </div>
+          <div class=" sss border-bottom" style="color:white; margin-top: -10px; font-size:1px; ">
+            <p>fghjk</p>
+          </div>
+
         <div class="scam-prevention border-bottom" style="width: 100%;">
           <!-- <p style="font-size: 14px; margin-bottom: 0px; margin-top: 30px;"></p> -->
           <p style="font-size: 14px; margin-bottom: 5px; margin-top: 30px; text-align: justify;">
