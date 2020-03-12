@@ -14,7 +14,17 @@ if (messages) {
 
   // Telling `chat.js` to call this piece of code whenever a new message is received
   // over ActionCable
-  setCallback(message => {
+  setCallback((sender_message, recipient_message) => {
+    const currentUserId = document.getElementById("chat-box").dataset.currentUserId
+    const senderMessageId = sender_message.match(/(\d+)/)[0];
+    const recipientMessageId = recipient_message.match(/(\d+)/)[0];
+    let message;
+    if (currentUserId === senderMessageId) {
+      message = sender_message;
+    } else if (currentUserId === recipientMessageId) {
+      message = recipient_message;
+    }
+
     const div = document.createElement('div');
 
     div.innerHTML = message;

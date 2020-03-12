@@ -1,7 +1,9 @@
-<div class="message-row <%= current_user == message.user ? 'my-message' : 'other-message' %>">
+
+
+<div data-recipient-id="<%= other_user_id %>" class="message-row <%= message.user.id == other_user_id ? 'my-message' : 'other-message' %>">
   <div class="message">
     <div class="message--header">
-      <div class="<%= current_user == message.user ? 'd-flex justify-content-end' : 'd-flex justify-content-start' %>">
+      <div class="<%= message.user.id == other_user_id ? 'd-flex justify-content-end' : 'd-flex justify-content-start' %>">
         <% if current_user == message.user %>
           <div class="message--text">
             <% message.body.lines.each do |line| %>

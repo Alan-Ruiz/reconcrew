@@ -7,4 +7,8 @@ class Message < ApplicationRecord
   def message_time
     created_at.strftime("%d %b, %Y")
   end
+
+  def other_user
+    user.sender?(chat) ? chat.recipient : chat.sender
+  end
 end
